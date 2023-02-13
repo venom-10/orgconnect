@@ -10,9 +10,9 @@ app.use(express.json());
 app.use(require('./router/auth'));
 
 
-app.get('/about', (req,res) => {
-    res.send(`This is about section`);
-});
+// app.get('/about', (req,res) => {
+//     res.send(`This is about section`);
+// });
 
 // app.get('/contact', (req,res) => {
 //     res.send(`This is contact section   `);
