@@ -7,7 +7,7 @@ import { grey } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 import image from "../images/img16.avif";
 import bkimg from "../images/img6.avif";
-import GoogleIcon from "@mui/icons-material/Google";
+import GoogleIcon from "../images/Google.svg";
 import logo from '../images/orgconnect_logo.jpeg'
 import '../App.css'
 
@@ -80,9 +80,10 @@ function Login() {
               <div className="flex justify-center my-2">
                 <a
                   href="/"
-                  className="border-2 border-color2 hover:bg-color2 group hover:text-white font-medium rounded-full p-3 mx-1 text-sm"
+                  className="border-2 border-color2 hover:bg-color2 group hover:text-white font-medium rounded-full p-3 mx-1 text-sm flex"
                 >
-                  <GoogleIcon className="text-custom_blue mr-1 -mt-1" />
+                  {/* <GoogleIcon className="text-custom_blue mr-1 -mt-1" /> */}
+                  <img className="w-6 h-6 mr-1" src={GoogleIcon} alt="Google" />
                   Sign in with google
                 </a>
               </div>
