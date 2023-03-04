@@ -5,10 +5,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { grey } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
-import image from "../images/img16.avif";
-import bkimg from "../images/img6.avif";
 import GoogleIcon from "../images/Google.svg";
-import logo from '../images/orgconnect_logo.jpeg'
 import '../App.css'
 
 function Login() {
@@ -36,7 +33,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(`Email: ${email}, Password: ${password}`);
+    console.log(`Email: ${details.email}, Password: ${details.password}`);
 
     const res = await fetch("/signin", {
       method: "POST",
@@ -67,28 +64,16 @@ function Login() {
         <title>OrgConnect</title>
       </div>
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        {/* style={{ backgroundImage:`url(${bkimg})`, backgroundSize: 'cover' }} */}
         <div className="bg-white rounded-2xl shadow-2xl flex w-2/3 max-w-4xl">
           <div className="w-3/5 p-5">
-            <div className="-mb-7">
-              {/* <span className="text-orange-400">Org</span>Connect */}
-              <img className="__logo" src={logo} alt="logo" />
+            <div className="text-left font-bold">
+              <span className="text-custom_orng ">Org</span>Connect
             </div>
             <div className="py-10">
               <h2 className="text-3xl font-bold text-color2 mb-2 ">Sign In</h2>
-              {/* <div className='border-2 width-10  mb-2 border-cyan-500'></div> */}
-              <div className="flex justify-center my-2">
-                <a
-                  href="/"
-                  className="border-2 border-color2 hover:bg-color2 group hover:text-white font-medium rounded-full p-3 mx-1 text-sm flex"
-                >
-                  {/* <GoogleIcon className="text-custom_blue mr-1 -mt-1" /> */}
-                  <img className="w-6 h-6 mr-1" src={GoogleIcon} alt="Google" />
-                  Sign in with google
-                </a>
-              </div>
+
               {/* social login section*/}
-              <p className="text-gray-800 text-xs">OR</p>
+              {/* <p className="text-gray-800 text-xs">OR</p> */}
               {showError === true ? (
                 <div className="text-sm text-red-500 items-left">
                   Invalid Credentials! Try Again
@@ -122,7 +107,7 @@ function Login() {
                     onChange={handleDetailsChange}
                     required={true}
                     className="bg-gray-100 outline-none text-sm flex-1"
-                  ></input>
+                  />
                   {showPassword === true ? (
                     <VisibilityIcon
                       onClick={handleClickShowPassword}
@@ -142,33 +127,50 @@ function Login() {
                       name="remember me"
                       className="mr-1"
                     />
-                    Remeber me
+                    Remember me
                   </label>
                   <a href="/" className="text-xs font-medium">
                     Forgot Password?
                   </a>
                 </div>
-                <button
-                  type="submit"
-                  className="border-2 border-color2 rounded-full px-12 py-2 inline-block font-semibold hover:bg-color2 hover:text-white"
-                >
-                  Sign in
-                </button>
+                <div className="flex flex-col">
+                  <button
+                    type="submit"
+                    className="border-2 border-color2 rounded-full px-12 py-2 my-2 inline-block font-semibold hover:bg-color2 hover:text-white"
+                  >
+                    Sign in
+                  </button>
+                  <p className="font-bold text-sm text-gray-800">OR</p>
+                  <div className="flex justify-center my-2">
+                    <a
+                      href="/"
+                      // className="border-2 border-color2 hover:bg-color2 group hover:text-white font-medium rounded-full p-3 mx-1 text-sm flex"
+                      className="border-2 border-color2 rounded-full px-4 py-2 font-semibold hover:bg-color2 hover:text-white flex"
+                    >
+                      Continue with
+                      <img
+                        className="w-6 h-6 ml-3"
+                        src={GoogleIcon}
+                        alt="Google"
+                      />
+                    </a>
+                  </div>
+                </div>
               </form>
             </div>
           </div>
           {/* style={{ backgroundImage:`url(${bkimg})`, backgroundSize: 'cover' }} */}
           <div className="w-2/5 bg-color2 text-cyan-500 rounded-tr-2xl rounded-br-2xl py-36 px-12">
-            <h2 className="text-3xl font-bold mb-2 text-green-400">
-              <span className="text-orange-400">Org</span>Connect
+            <h2 className="text-3xl font-bold mb-2 text-white">
+              <span className="text-custom_orng">Org</span>Connect
             </h2>
             <div className="border-2 width-10 border-white mb-2"></div>
-            <p className="mb-2 text-color1 font-semibold">Sign Up</p>
+            <p className="mb-2 text-color1 font-semibold">Register Now</p>
             <a
               href="/Register"
-              className="border-2 border-white text-color1 rounded-full px-12 py-2 inline-block font-semibold hover:bg-color1 hover:text-color2"
+              className="border-2 mt-2 border-white text-color1 rounded-full px-12 py-2 inline-block font-semibold hover:bg-color1 hover:text-color2"
             >
-              Register
+              Sign Up
             </a>
           </div>
         </div>

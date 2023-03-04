@@ -40,7 +40,8 @@ router.post('/register', async(req,res) => {
 router.post('/signin', async (req,res) => {
     try{
         const {email, password} = req.body;
-
+        console.log("this is back", email, password
+        );
         if(!email || !password) {
             return res.status(400).json("Please Fill the data");
         }

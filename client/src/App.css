@@ -1,4 +1,14 @@
 .__logo{
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.sr1-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border-width: 0;
 }
