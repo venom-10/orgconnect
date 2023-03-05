@@ -7,7 +7,9 @@ module.exports = {
         color1: "#E1F3EF",
         color2: "#20262E",
         custom_blue: "#4285F4",
-        custom_orng: "#FF9F29"
+        custom_orng: "#FF9F29",
+        custom_black: "#161616",
+        custom_white: "#ffffff"
       },
     },
   },

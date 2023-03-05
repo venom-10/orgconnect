@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 export default function PersonalDetails() {
   const [registerDetails, setRegisterDetails] = useState({
-    hsc: "",
-    sc: "",
-    perc: "",
-    pass_year: "",
-    s_board: "Option",
-    h_board: "Option",
-    state: "",
-    address: "",
-    dob: "00-00-0000",
-    profile: "",
+    skill1:"",
+    skill2:"",
+    skill3:"",
+    skill4:"",
+    w_exp:"",
+    j_name:"",
+    cmp_name:"",
+    st_data:"",
+    job_loc:"",
+    curr_job:"option"
   });
   const date = new Date().getFullYear();
   const cur_date = `${date}` + "-12-31";
@@ -55,8 +55,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.sc}
                     onChange={handleChangeAll}
-                    name="sc"
-                    id="sc_name"
+                    name="skill1"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-grey-100 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                     placeholder="Skill 1"
@@ -67,8 +66,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.perc}
                     onChange={handleChangeAll}
-                    name="perc"
-                    id="percentage"
+                    name="skill2"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                     placeholder="Skill 2"
@@ -79,8 +77,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.pass_year}
                     onChange={handleChangeAll}
-                    name="pass_year"
-                    id="passing_year"
+                    name="skill3"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                     placeholder="Skill 3"
@@ -91,8 +88,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.pass_year}
                     onChange={handleChangeAll}
-                    name="pass_year"
-                    id="passing_year"
+                    name="skill4"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                     placeholder="Skill 4"
@@ -114,8 +110,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.hsc}
                     onChange={handleChangeAll}
-                    name="hsc"
-                    id="hsc_name"
+                    name="w_exp"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-grey-100 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
@@ -131,8 +126,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.perc}
                     onChange={handleChangeAll}
-                    name="perc"
-                    id="percentage"
+                    name="j_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
@@ -148,8 +142,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.pass_year}
                     onChange={handleChangeAll}
-                    name="pass_year"
-                    id="passing_year"
+                    name="cmp_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
@@ -165,8 +158,7 @@ export default function PersonalDetails() {
                     type="date"
                     value={registerDetails.dob}
                     onChange={handleChangeAll}
-                    name="dob"
-                    id="first_name"
+                    name="st_date"
                     max={cur_date}
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
@@ -183,8 +175,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.pass_year}
                     onChange={handleChangeAll}
-                    name="pass_year"
-                    id="passing_year"
+                    name="job_loc"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
@@ -197,8 +188,7 @@ export default function PersonalDetails() {
                     Current Job?
                   </label>
                   <select
-                    id="s_board"
-                    name="s_board"
+                    name="curr_job"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value={registerDetails.board}
                     onChange={handleChangeAll}

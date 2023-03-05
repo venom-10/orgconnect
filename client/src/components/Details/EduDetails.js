@@ -2,16 +2,26 @@ import React, { useState } from "react";
 
 export default function PersonalDetails() {
   const [registerDetails, setRegisterDetails] = useState({
-    hsc: "",
-    sc: "",
-    perc: "",
-    pass_year: "",
-    s_board: "Option",
-    h_board: "Option",
-    state: "",
-    address: "",
-    dob: "00-00-0000",
-    profile: "",
+    se_name:"",
+    se_per:"",
+    se_py:"",
+    se_b:"option",
+    hse_name:"",
+    hse_per:"",
+    hse_py:"",
+    hse_b:"option",
+    g_deg:"",
+    g_name:"",
+    g_loc:"",
+    g_cgpa:"",
+    pg_deg:"",
+    pg_name:"",
+    pg_loc:"",
+    pg_cgpa:"",
+    phd_speci:"",
+    phd_title:"",
+    phd_name:"",
+    phd_date:""
   });
   const date = new Date().getFullYear();
   const cur_date = `${date}-12-31`;
@@ -56,8 +66,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.sc}
                     onChange={handleChangeAll}
-                    name="sc"
-                    id="sc_name"
+                    name="se_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-grey-100 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     
                     placeholder="School/University"
@@ -74,8 +83,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.perc}
                     onChange={handleChangeAll}
-                    name="perc"
-                    id="percentage"
+                    name="se_per"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     
                     placeholder="Percentage"
@@ -92,8 +100,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.pass_year}
                     onChange={handleChangeAll}
-                    name="pass_year"
-                    id="passing_year"
+                    name="se_py"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     
                     placeholder="Passing Year"
@@ -107,8 +114,7 @@ export default function PersonalDetails() {
                     Board
                   </label>
                   <select
-                    id="s_board"
-                    name="s_board"
+                    name="se_b"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value={registerDetails.board}
                     onChange={handleChangeAll}
@@ -136,14 +142,12 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.hsc}
                     onChange={handleChangeAll}
-                    name="hsc"
-                    id="hsc_name"
+                    name="hse_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-grey-100 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     
                     placeholder="School/University"
                   />
                 </div>
-                <div></div>
                 <div className="percentage">
                   <label
                     htmlFor="percentage"
@@ -155,8 +159,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.perc}
                     onChange={handleChangeAll}
-                    name="perc"
-                    id="percentage"
+                    name="hse_per"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     
                     placeholder="Percentage"
@@ -173,8 +176,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.pass_year}
                     onChange={handleChangeAll}
-                    name="pass_year"
-                    id="passing_year"
+                    name="hse_py"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     
                     placeholder="Passing Year"
@@ -188,8 +190,7 @@ export default function PersonalDetails() {
                     Board
                   </label>
                   <select
-                    id="h_board"
-                    name="h_board"
+                    name="hse_b"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value={registerDetails.board}
                     onChange={handleChangeAll}
@@ -217,7 +218,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.grad_degree}
                     onChange={handleChangeAll}
-                    name="grad_degree"
+                    name="g_deg"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Degree"
                     
@@ -234,7 +235,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.grad_univ}
                     onChange={handleChangeAll}
-                    name="grad_univ"
+                    name="g_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="College / University"
                     
@@ -251,7 +252,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.address}
                     onChange={handleChangeAll}
-                    name="grad_loc"
+                    name="g_loc"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Graduation Location"
                     
@@ -268,7 +269,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.address}
                     onChange={handleChangeAll}
-                    name="grad_gpa"
+                    name="g_cgpa"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="CGPA out of 10"
                     
@@ -290,7 +291,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.grad_degree}
                     onChange={handleChangeAll}
-                    name="post_grad_degree"
+                    name="pg_deg"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Degree"
                     
@@ -307,7 +308,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.grad_univ}
                     onChange={handleChangeAll}
-                    name="grad_univ"
+                    name="pg_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="College / University"
                     
@@ -324,7 +325,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.address}
                     onChange={handleChangeAll}
-                    name="post_grad_loc"
+                    name="pg_loc"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Post Graduation Location"
                     
@@ -341,7 +342,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.address}
                     onChange={handleChangeAll}
-                    name="post_grad_gpa"
+                    name="pg_cgpa"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="CGPA out of 10"
                     
@@ -363,7 +364,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.grad_degree}
                     onChange={handleChangeAll}
-                    name="phd_field"
+                    name="phd_speci"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Specialization"
                     
@@ -380,7 +381,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.grad_univ}
                     onChange={handleChangeAll}
-                    name="phd_univ"
+                    name="phd_title"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Title"
                     
@@ -397,7 +398,7 @@ export default function PersonalDetails() {
                     type="text"
                     value={registerDetails.grad_univ}
                     onChange={handleChangeAll}
-                    name="phd_univ"
+                    name="phd_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="College / University"
                     
@@ -414,7 +415,7 @@ export default function PersonalDetails() {
                     type="date"
                     value={registerDetails.dob}
                     onChange={handleChangeAll}
-                    name="dob"
+                    name="phd_date"
                     id="first_name"
                     max={cur_date}
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
