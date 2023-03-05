@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema({
+const conn = require("../db/conn");
+
+const loginSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -21,7 +23,7 @@ const userSchema = new mongoose.Schema({
 })
 
 //Hashing
-userSchema.pre('save', async function(next){
+loginSchema.pre('save', async function(next){
     if(this.isModified('password')){
         this.password = await bcrypt.hash(this.password,12);
         this.cpassword =await bcrypt.hash(this.cpassword,12);
@@ -30,6 +32,6 @@ userSchema.pre('save', async function(next){
 } )
 
 
-const User = mongoose.model('REGISTRATION',userSchema);
+const Login = mongoose.login.model('details',loginSchema);
 
-module.exports = User;
+module.exports = Login;
