@@ -54,6 +54,7 @@ function Login() {
       console.log("Login Sucessfull");
       setError(false);
       //
+      localStorage.setItem("email", details.email);
       navigate("/home");
     }
   };

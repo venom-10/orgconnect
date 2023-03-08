@@ -89,7 +89,7 @@ const userSchema = new mongoose.Schema({
     phdTitle: {
         type: String,
     },
-    phnCollege: {
+    phdCollege: {
         type: String,
     },
     phdDate: {

@@ -81,6 +81,7 @@ function RegistrationForm() {
       setError("Password and confirm password are different");
       setshowError(true);
     } else {
+      localStorage.setItem("email", email);
       setTimeout(() => {
         navigate(`/RegisterDetails`);
       }, 2000);
@@ -187,7 +188,7 @@ function RegistrationForm() {
                 <div className="text-white font-semibold mb-4">
                   Already have an account?{" "}
                   <a
-                    class="hover:text-custom_orng text-orange-300 hover:italic"
+                    className="hover:text-custom_orng text-orange-300 hover:italic"
                     href="/Login"
                     underline="hover"
                   >
