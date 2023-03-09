@@ -12,17 +12,18 @@ export default function PersonalDetails() {
     hse_b:"option",
     g_deg:"",
     g_name:"",
-    g_loc:"",
+    g_py:"",
     g_cgpa:"",
     pg_deg:"",
     pg_name:"",
-    pg_loc:"",
+    pg_py:"",
     pg_cgpa:"",
     phd_speci:"",
     phd_title:"",
     phd_name:"",
     phd_date:""
   });
+
   const date = new Date().getFullYear();
   const cur_date = `${date}-12-31`;
 
@@ -33,10 +34,35 @@ export default function PersonalDetails() {
       [name]: value,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(registerDetails);
   };
+
+  const storeData = () => {
+    localStorage.setItem("sename", registerDetails.se_name);
+    localStorage.setItem("seper", registerDetails.se_per);
+    localStorage.setItem("sepy", registerDetails.se_py);
+    localStorage.setItem("seb", registerDetails.se_b);
+    localStorage.setItem("hsename", registerDetails.hse_name);
+    localStorage.setItem("hseper", registerDetails.hse_per);
+    localStorage.setItem("hsepy", registerDetails.hse_py);
+    localStorage.setItem("hseb", registerDetails.hse_b);
+    localStorage.setItem("gdeg", registerDetails.g_deg);
+    localStorage.setItem("gname", registerDetails.g_name);
+    localStorage.setItem("gpy", registerDetails.g_py);
+    localStorage.setItem("gcgpa", registerDetails.g_cgpa);
+    localStorage.setItem("pgdeg", registerDetails.pg_deg);
+    localStorage.setItem("pgname", registerDetails.pg_name);
+    localStorage.setItem("pgpy", registerDetails.pg_py);
+    localStorage.setItem("pgcgpa", registerDetails.pg_cgpa);
+    localStorage.setItem("phdspeci", registerDetails.phd_speci);
+    localStorage.setItem("phdtitle", registerDetails.phd_title);
+    localStorage.setItem("phdname", registerDetails.phd_name);
+    localStorage.setItem("phddate", registerDetails.phd_date);
+  }
+
   return (
     <>
       <div className="flex justify-center items-center bg-color1">
@@ -64,7 +90,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.sc}
+                    value={registerDetails.se_name}
                     onChange={handleChangeAll}
                     name="se_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-grey-100 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -81,7 +107,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.perc}
+                    value={registerDetails.se_per}
                     onChange={handleChangeAll}
                     name="se_per"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -98,7 +124,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.pass_year}
+                    value={registerDetails.se_py}
                     onChange={handleChangeAll}
                     name="se_py"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -116,7 +142,7 @@ export default function PersonalDetails() {
                   <select
                     name="se_b"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={registerDetails.board}
+                    value={registerDetails.se_b}
                     onChange={handleChangeAll}
                     placeholder="Options"
                   >
@@ -140,7 +166,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.hsc}
+                    value={registerDetails.hse_name}
                     onChange={handleChangeAll}
                     name="hse_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-grey-100 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -157,7 +183,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.perc}
+                    value={registerDetails.hse_per}
                     onChange={handleChangeAll}
                     name="hse_per"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -174,7 +200,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.pass_year}
+                    value={registerDetails.hse_py}
                     onChange={handleChangeAll}
                     name="hse_py"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -192,7 +218,7 @@ export default function PersonalDetails() {
                   <select
                     name="hse_b"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={registerDetails.board}
+                    value={registerDetails.hse_b}
                     onChange={handleChangeAll}
                     placeholder="Options"
                   >
@@ -216,7 +242,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.grad_degree}
+                    value={registerDetails.g_deg}
                     onChange={handleChangeAll}
                     name="g_deg"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -233,7 +259,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.grad_univ}
+                    value={registerDetails.g_name}
                     onChange={handleChangeAll}
                     name="g_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -241,18 +267,18 @@ export default function PersonalDetails() {
                     
                   />
                 </div>
-                <div className="grad_loc">
+                <div className="g_py">
                   <label
-                    htmlFor="grad_loc"
+                    htmlFor="g_py"
                     className="block mb-2 text-base font-medium text-white"
                   >
-                    Graduation Location
+                    Passing Year
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.address}
+                    value={registerDetails.g_py}
                     onChange={handleChangeAll}
-                    name="g_loc"
+                    name="g_py"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Graduation Location"
                     
@@ -267,7 +293,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.address}
+                    value={registerDetails.g_cgpa}
                     onChange={handleChangeAll}
                     name="g_cgpa"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -289,7 +315,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.grad_degree}
+                    value={registerDetails.pg_deg}
                     onChange={handleChangeAll}
                     name="pg_deg"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -306,7 +332,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.grad_univ}
+                    value={registerDetails.pg_name}
                     onChange={handleChangeAll}
                     name="pg_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -319,13 +345,13 @@ export default function PersonalDetails() {
                     htmlFor="post_grad_loc"
                     className="block mb-2 text-base font-medium text-white"
                   >
-                    Post Graduation Location
+                    Passing Year
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.address}
+                    value={registerDetails.pg_py}
                     onChange={handleChangeAll}
-                    name="pg_loc"
+                    name="pg_py"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Post Graduation Location"
                     
@@ -340,7 +366,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.address}
+                    value={registerDetails.pg_cgpa}
                     onChange={handleChangeAll}
                     name="pg_cgpa"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -362,7 +388,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.grad_degree}
+                    value={registerDetails.phd_speci}
                     onChange={handleChangeAll}
                     name="phd_speci"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -379,7 +405,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.grad_univ}
+                    value={registerDetails.phd_title}
                     onChange={handleChangeAll}
                     name="phd_title"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -396,7 +422,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.grad_univ}
+                    value={registerDetails.phd_name}
                     onChange={handleChangeAll}
                     name="phd_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -413,7 +439,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="date"
-                    value={registerDetails.dob}
+                    value={registerDetails.phd_date}
                     onChange={handleChangeAll}
                     name="phd_date"
                     id="first_name"
@@ -431,7 +457,8 @@ export default function PersonalDetails() {
                     Skip
                   </button>
                   <a
-                    href="Skills"
+                    href="/Skills"
+                    onClick={storeData}
                     className="inline-flex justify-center rounded-md border py-2 px-4 text-md font-medium bg-color2 hover:bg-color1 hover:text-color2"
                   >
                     Save and Next

@@ -1,3 +1,4 @@
+import { getTablePaginationUnstyledUtilityClass } from "@mui/base";
 import React, { useState } from "react";
 export default function PersonalDetails() {
   const [registerDetails, setRegisterDetails] = useState({
@@ -8,10 +9,11 @@ export default function PersonalDetails() {
     w_exp:"",
     j_name:"",
     cmp_name:"",
-    st_data:"",
+    st_date:"",
     job_loc:"",
     curr_job:"option"
   });
+
   const date = new Date().getFullYear();
   const cur_date = `${date}` + "-12-31";
 
@@ -22,10 +24,102 @@ export default function PersonalDetails() {
       [name]: value,
     }));
   };
-  const handleSubmit = (e) => {
+
+  const email = localStorage.getItem("email");
+  const fname = localStorage.getItem("fname");
+  const lname = localStorage.getItem("lname");
+  const phn = localStorage.getItem("phn");
+  const gender = localStorage.getItem("gender");
+  const city = localStorage.getItem("city");
+  const state = localStorage.getItem("state");
+  const address = localStorage.getItem("address");
+  const dob = localStorage.getItem("dob");
+  const sename = localStorage.getItem("sename");
+  const seper = localStorage.getItem("seper");
+  const sepy = localStorage.getItem("sepy");
+  const seb = localStorage.getItem("seb");
+  const hsename = localStorage.getItem("hsename");
+  const hseper = localStorage.getItem("hseper");
+  const hsepy = localStorage.getItem("hsepy");
+  const hseb = localStorage.getItem("hseb");
+  const gdeg = localStorage.getItem("gdeg");
+  const gname = localStorage.getItem("gname");
+  const gpy = localStorage.getItem("gpy");
+  const gcgpa = localStorage.getItem("gcgpa");
+  const pgdeg = localStorage.getItem("pgdeg");
+  const pgname = localStorage.getItem("pgname");
+  const pgpy =  localStorage.getItem("pgpy");
+  const pgcgpa = localStorage.getItem("pgcgpa");
+  const phdspeci = localStorage.getItem("phdspeci");
+  const phdtitle = localStorage.getItem("phdtitle");
+  const phdname = localStorage.getItem("phdname");
+  const phddate = localStorage.getItem("phddate");
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(registerDetails);
+
+    const [skill1, skill2, skill3, skill4, w_exp, j_name, cmp_name, st_date, job_loc, curr_job] 
+        = [registerDetails.skill1, registerDetails.skill2, registerDetails.skill3, registerDetails.skill4,
+           registerDetails.w_exp, registerDetails.j_name, registerDetails.cmp_name, registerDetails.st_date,
+           registerDetails.job_loc, registerDetails.curr_job];
+
+    const skill = (skill1 + ", " + skill2 + ", " + skill3 + ", " + skill4);
+
+    const res = await fetch("/userDetails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email:email,
+        firstName:fname,
+        lastName:lname,
+        phone:phn,
+        gender:gender,
+        city:city,
+        state:state,
+        address:address,
+        dob:dob,
+        secondarySchool:sename,
+        secondaryPercent:seper,
+        secondaryPassingYear:sepy,
+        secondaryBoard:seb,
+        higherSchool:hsename,
+        higherPercent:hseper,
+        higherPassingYear:hsepy,
+        higherBoard:hseb,
+        graduationDegree:gdeg,
+        graduationCollge:gname,
+        graduationPassingYear:gpy,
+        graduationCGPA:gcgpa,
+        postgradDegree: pgdeg,
+        postgradCollge:pgname,
+        postgradPassingYear:pgpy,
+        postgradCGPA:pgcgpa,
+        phdSpecialization:phdspeci,
+        phdTitle:phdtitle,
+        phdCollege:phdname,
+        phdDate:phddate,
+        skills: skill,
+        workMonths: w_exp,
+        jobTitle:j_name,
+        companyName:cmp_name,
+        jobStartDate: st_date,
+        location: job_loc,
+        currentJob: curr_job
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    if (data.message === "Personal Details Saved Sucessfullys") {
+      console.log("Data Saved Sucessfully");
+    } else {
+      console.log("Error in data saving");
+    }
   };
+
   return (
     <>
       <div
@@ -53,7 +147,7 @@ export default function PersonalDetails() {
                 <div className="sc_name text-white mb-2">
                   <input
                     type="text"
-                    value={registerDetails.sc}
+                    value={registerDetails.skill1}
                     onChange={handleChangeAll}
                     name="skill1"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-grey-100 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -64,7 +158,7 @@ export default function PersonalDetails() {
                 <div className="percentage">
                   <input
                     type="text"
-                    value={registerDetails.perc}
+                    value={registerDetails.skill2}
                     onChange={handleChangeAll}
                     name="skill2"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -75,7 +169,7 @@ export default function PersonalDetails() {
                 <div className="passing_year">
                   <input
                     type="text"
-                    value={registerDetails.pass_year}
+                    value={registerDetails.skill3}
                     onChange={handleChangeAll}
                     name="skill3"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -86,7 +180,7 @@ export default function PersonalDetails() {
                 <div className="s_board">
                   <input
                     type="text"
-                    value={registerDetails.pass_year}
+                    value={registerDetails.skill4}
                     onChange={handleChangeAll}
                     name="skill4"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -108,7 +202,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.hsc}
+                    value={registerDetails.w_exp}
                     onChange={handleChangeAll}
                     name="w_exp"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-grey-100 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -124,7 +218,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.perc}
+                    value={registerDetails.j_name}
                     onChange={handleChangeAll}
                     name="j_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -140,7 +234,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.pass_year}
+                    value={registerDetails.cmp_name}
                     onChange={handleChangeAll}
                     name="cmp_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -156,7 +250,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="date"
-                    value={registerDetails.dob}
+                    value={registerDetails.st_date}
                     onChange={handleChangeAll}
                     name="st_date"
                     max={cur_date}
@@ -173,7 +267,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     type="text"
-                    value={registerDetails.pass_year}
+                    value={registerDetails.job_loc}
                     onChange={handleChangeAll}
                     name="job_loc"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -190,7 +284,7 @@ export default function PersonalDetails() {
                   <select
                     name="curr_job"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={registerDetails.board}
+                    value={registerDetails.curr_job}
                     onChange={handleChangeAll}
                     placeholder="Select an option"
                   >

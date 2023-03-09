@@ -13,6 +13,7 @@ export default function PersonalDetails() {
     dob: "00-00-0000",
     profile: "",
   });
+
   const date = new Date().getFullYear();
   const cur_date = `${date}-12-31`;
 
@@ -25,10 +26,23 @@ export default function PersonalDetails() {
       [name]: value,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(registerDetails);
   };
+
+  const storeData = () => {
+    localStorage.setItem("fname", registerDetails.fname);
+    localStorage.setItem("lname", registerDetails.lname);
+    localStorage.setItem("phn", registerDetails.Ph_no);
+    localStorage.setItem("gender", registerDetails.gender);
+    localStorage.setItem("city", registerDetails.city);
+    localStorage.setItem("state", registerDetails.state);
+    localStorage.setItem("address", registerDetails.address);
+    localStorage.setItem("dob", registerDetails.dob);
+  }
+
   return (
     <>
       <div className="flex min-h-screen bg-color1 justify-center items-center">
@@ -208,6 +222,7 @@ export default function PersonalDetails() {
                 <div className="flex justify-end items-center w-full mt-5 mb-3">
                   <a
                     href="/EduDetails"
+                    onClick = {storeData}
                     className="inline-flex justify-center rounded-md border py-2 px-4 text-md font-medium bg-color2 hover:bg-color1 hover:text-color2"
                   >
                     Save and Next
