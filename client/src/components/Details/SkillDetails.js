@@ -1,5 +1,7 @@
 import { getTablePaginationUnstyledUtilityClass } from "@mui/base";
 import React, { useState } from "react";
+
+
 export default function PersonalDetails() {
   const [registerDetails, setRegisterDetails] = useState({
     skill1:"",
@@ -113,7 +115,7 @@ export default function PersonalDetails() {
 
     const data = await res.json();
     console.log(data);
-    if (data.message === "Personal Details Saved Sucessfullys") {
+    if (data.message === "Personal Details Saved Sucessfully") {
       console.log("Data Saved Sucessfully");
     } else {
       console.log("Error in data saving");
