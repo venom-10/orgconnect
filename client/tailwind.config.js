@@ -11,6 +11,9 @@ module.exports = {
         custom_black: "#161616",
         custom_white: "#ffffff"
       },
+      fontFamily:{
+        main:"Inter"
+      }
     },
   },
   plugins: [],

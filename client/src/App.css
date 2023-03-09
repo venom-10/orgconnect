@@ -1,10 +1,26 @@
-.__logo{
+.__logo {
   width: 50px;
   height: 50px;
   border-radius: 5px;
 }
-
-.sr1-only{
+.sidebar_profile {
+  width: 80px;
+  height: 80px;
+}
+.nav_header,
+.body_header {
+  flex: 0.7;
+}
+.nav_side_header,
+.body_side_header {
+  flex: 0.3;
+}
+.stay_page {
+  border-bottom-width: 3.2px;
+  --tw-border-opacity: 1;
+  border-color: #FFF
+}
+.sr1-only {
   position: absolute;
   width: 1px;
   height: 1px;
