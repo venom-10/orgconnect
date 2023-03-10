@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
+const dotenv = require("dotenv");
 mongoose.set("strictQuery", false);
+dotenv.config({ path: "../.env" })
 
-mongoose.login = mongoose.createConnection("mongodb+srv://isneha:isnehapwd@cluster0.y0mryn4.mongodb.net/login-details?retryWrites=true&w=majority", {
+
+mongoose.login = mongoose.createConnection(process.env.DB_LOGIN, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-mongoose.details = mongoose.createConnection("mongodb+srv://isneha:isnehapwd@cluster0.y0mryn4.mongodb.net/personal-details?retryWrites=true&w=majority", {
+mongoose.details = mongoose.createConnection(process.env.DB_DETAILS, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
