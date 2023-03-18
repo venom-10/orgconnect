@@ -450,12 +450,13 @@ export default function PersonalDetails() {
                 </div>
                 <div className="w-full"></div>
                 <div className="flex justify-end items-center w-full mt-5 mb-3">
-                  <button
+                  <a
+                    href="/Skills"
                     type="submit"
                     className="inline-flex border-custom_orng mx-8 justify-center rounded-md border py-2 px-4 text-md font-medium text-orange-300 hover:text-color1 hover:bg-custom_orng"
                   >
                     Skip
-                  </button>
+                  </a>
                   <a
                     href="/Skills"
                     onClick={storeData}

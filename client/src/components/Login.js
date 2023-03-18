@@ -135,12 +135,13 @@ function Login() {
                   </a>
                 </div>
                 <div className="flex flex-col">
-                  <button
+                  <a
+                    href='/app/home'
                     type="submit"
                     className="border-2 border-color2 rounded-full px-12 py-2 my-2 inline-block font-semibold hover:bg-color2 hover:text-white"
                   >
                     Sign in
-                  </button>
+                  </a>
                   <p className="font-bold text-sm text-gray-800">OR</p>
                   <div className="flex justify-center my-2">
                     <a

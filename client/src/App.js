@@ -19,16 +19,19 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Login />} />
-        <Route path="Home" element={<HomePage />} />
         <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Registration />} />
         <Route path="RegisterDetails" element={<PersonalDetails />} />
         <Route path="EduDetails" element={<PersonalDetails2 />} />
         <Route path="Skills" element={<Skills />} />
-        <Route path="Group" element={<Group />} />
-        <Route path="Learn" element={<Learn />} />
-        <Route path="Message" element={<Message />} />
-        <Route path="Profile" element={<Profile />} />
+        <Route path="app">
+          <Route path="Home" element={<HomePage />} />
+          <Route path="Group" element={<Group />} />
+          <Route path="Learn" element={<Learn />} />
+          <Route path="Message" element={<Message />} />
+          <Route path="Profile" element={<Profile />} />
+          <Route path="*" element={<Error />} />
+        </Route>
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

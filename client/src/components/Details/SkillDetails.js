@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 
 export default function PersonalDetails() {
+  const navigate = useNavigate();
   const [registerDetails, setRegisterDetails] = useState({
     skill1:"",
     skill2:"",
@@ -116,6 +118,7 @@ export default function PersonalDetails() {
     console.log(data);
     if (data.message === "Personal Details Saved Sucessfully") {
       console.log("Data Saved Sucessfully");
+      navigate(`/app/home`);
     } else {
       console.log("Error in data saving");
     }
@@ -300,12 +303,12 @@ export default function PersonalDetails() {
               <div className="w-full"></div>
               <div className="flex justify-end items-center w-full gap-6 mb-6 mt-16 grid-cols-2 max-sm:grid-cols-1 px-5">
                 {/* <a class='text_org mr-6 text-md tracking-wider font-semibold' href='/Login' underline='hover'>Skip</a> */}
-                <button
-                  type="submit"
+                <a
+                href='/app/home'
                   className="inline-flex border-custom_orng mx-8 justify-center rounded-md border py-2 px-4 text-md font-medium text-orange-300 hover:text-color1 hover:bg-custom_orng"
                 >
                   Skip
-                </button>
+                </a>
                 <button
                   type="submit"
                   className="inline-flex justify-center rounded-md border py-2 px-4 text-md font-medium bg-color2 hover:bg-color1 hover:text-color2"

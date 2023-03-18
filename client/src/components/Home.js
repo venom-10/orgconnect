@@ -22,7 +22,7 @@ export default function HomePage() {
               <ul className="h-full ml-10 flex items-center gap-x-5 text-custom_black font-semibold ">
                 <NavLink
                   className="border-black hover:text-custom_white h-full flex items-center"
-                  to="/home"
+                  to="/app/home"
                 >
                   <li>
                     <HomeRoundedIcon className="mr-1" />
@@ -31,7 +31,7 @@ export default function HomePage() {
                 </NavLink>
                 <NavLink
                   className="border-black hover:text-custom_white h-full flex items-center"
-                  to="/group"
+                  to="/app/group"
                 >
                   <li>
                     <Groups2Icon className="mr-1" />
@@ -40,7 +40,7 @@ export default function HomePage() {
                 </NavLink>
                 <NavLink
                   className="border-black hover:text-custom_white h-full flex items-center"
-                  to="/learn"
+                  to="/app/learn"
                 >
                   <li>
                     <SchoolIcon className="mr-1" /> Learn
@@ -48,7 +48,7 @@ export default function HomePage() {
                 </NavLink>
                 <NavLink
                   className="border-black hover:text-custom_white h-full flex items-center"
-                  to="/message"
+                  to="/app/message"
                 >
                   <li>
                     <MailIcon className="mr-1" />
@@ -57,7 +57,7 @@ export default function HomePage() {
                 </NavLink>
                 <NavLink
                   className="border-black hover:text-custom_white h-full flex items-center"
-                  to="/profile"
+                  to="/app/profile"
                 >
                   <li>
                     <PersonIcon className="mr-1" />
