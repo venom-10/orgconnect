@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
+import { useNavigate } from "react-router";
 
 export default function PersonalDetails() {
+  const navigate = useNavigate();
   const [registerDetails, setRegisterDetails] = useState({
     fname: "",
     lname: "",
@@ -30,6 +32,7 @@ export default function PersonalDetails() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(registerDetails);
+    navigate("/edudetails");
   };
 
   const storeData = () => {
@@ -41,6 +44,7 @@ export default function PersonalDetails() {
     localStorage.setItem("state", registerDetails.state);
     localStorage.setItem("address", registerDetails.address);
     localStorage.setItem("dob", registerDetails.dob);
+    
   }
 
   return (
@@ -220,13 +224,12 @@ export default function PersonalDetails() {
                   </label>
                 </div>
                 <div className="flex justify-end items-center w-full mt-5 mb-3">
-                  <a
-                    href="/EduDetails"
+                  <button
                     onClick = {storeData}
                     className="inline-flex justify-center rounded-md border py-2 px-4 text-md font-medium bg-color2 hover:bg-color1 hover:text-color2"
                   >
                     Save and Next
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

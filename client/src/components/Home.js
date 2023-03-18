@@ -78,7 +78,7 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="main_body bg-gray-200 basis-11/12 flex ">
+          {/* <div className="main_body bg-gray-200 basis-11/12 flex ">
             <div className="sidebar bg-gray-900 shadow-lg  text-white">
               <div className="profile flex flex-col items-center mt-8">
                 <img
@@ -152,7 +152,7 @@ export default function HomePage() {
             <div className="sidebar ml-2 flex items-center justify-center">
               <h1 className="text-3xl">News Api</h1>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

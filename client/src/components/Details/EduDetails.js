@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
+
 
 export default function PersonalDetails() {
+
+  const navigate = useNavigate();
+
   const [registerDetails, setRegisterDetails] = useState({
     se_name:"",
     se_per:"",
@@ -38,6 +43,8 @@ export default function PersonalDetails() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(registerDetails);
+    navigate('/skills')
+
   };
 
   const storeData = () => {
@@ -89,6 +96,7 @@ export default function PersonalDetails() {
                     School / University
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.se_name}
                     onChange={handleChangeAll}
@@ -106,6 +114,7 @@ export default function PersonalDetails() {
                     Percentage
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.se_per}
                     onChange={handleChangeAll}
@@ -123,6 +132,7 @@ export default function PersonalDetails() {
                     Passing Year
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.se_py}
                     onChange={handleChangeAll}
@@ -165,6 +175,7 @@ export default function PersonalDetails() {
                     Higher Secondary Education
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.hse_name}
                     onChange={handleChangeAll}
@@ -182,6 +193,7 @@ export default function PersonalDetails() {
                     Percentage
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.hse_per}
                     onChange={handleChangeAll}
@@ -199,6 +211,7 @@ export default function PersonalDetails() {
                     Passing Year
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.hse_py}
                     onChange={handleChangeAll}
@@ -241,6 +254,7 @@ export default function PersonalDetails() {
                     Graduation
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.g_deg}
                     onChange={handleChangeAll}
@@ -258,6 +272,7 @@ export default function PersonalDetails() {
                     College / University
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.g_name}
                     onChange={handleChangeAll}
@@ -275,6 +290,7 @@ export default function PersonalDetails() {
                     Passing Year
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.g_py}
                     onChange={handleChangeAll}
@@ -292,6 +308,7 @@ export default function PersonalDetails() {
                     CGPA
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.g_cgpa}
                     onChange={handleChangeAll}
@@ -314,6 +331,7 @@ export default function PersonalDetails() {
                     Post Graduation
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.pg_deg}
                     onChange={handleChangeAll}
@@ -331,6 +349,7 @@ export default function PersonalDetails() {
                     College / University
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.pg_name}
                     onChange={handleChangeAll}
@@ -348,6 +367,7 @@ export default function PersonalDetails() {
                     Passing Year
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.pg_py}
                     onChange={handleChangeAll}
@@ -365,6 +385,7 @@ export default function PersonalDetails() {
                     CGPA
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.pg_cgpa}
                     onChange={handleChangeAll}
@@ -387,6 +408,7 @@ export default function PersonalDetails() {
                     Specialization
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.phd_speci}
                     onChange={handleChangeAll}
@@ -404,6 +426,7 @@ export default function PersonalDetails() {
                     Title of Research
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.phd_title}
                     onChange={handleChangeAll}
@@ -421,6 +444,7 @@ export default function PersonalDetails() {
                     College / University
                   </label>
                   <input
+                    required
                     type="text"
                     value={registerDetails.phd_name}
                     onChange={handleChangeAll}
@@ -438,6 +462,7 @@ export default function PersonalDetails() {
                     Date of Accomplishment
                   </label>
                   <input
+                    required
                     type="date"
                     value={registerDetails.phd_date}
                     onChange={handleChangeAll}
@@ -457,13 +482,12 @@ export default function PersonalDetails() {
                   >
                     Skip
                   </a>
-                  <a
-                    href="/Skills"
+                  <button
                     onClick={storeData}
                     className="inline-flex justify-center rounded-md border py-2 px-4 text-md font-medium bg-color2 hover:bg-color1 hover:text-color2"
                   >
                     Save and Next
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
