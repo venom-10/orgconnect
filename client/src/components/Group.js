@@ -5,99 +5,107 @@ import SchoolIcon from "@mui/icons-material/School";
 import MailIcon from "@mui/icons-material/Mail";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function HomePage() {
+  const defaultClass =
+    "border-black hover:text-custom_white h-full flex items-center";
+  const activeClass =
+    "border-black hover:text-custom_white h-full flex items-center";
+
   return (
     <>
       <div className="home flex  w-screen h-screen bg-custom_white">
-        <div className="main_body bg-custom_white w-full flex flex-col">
-          <div className="__nav basis-1/12 flex drop-shadow-lg bg-custom_orng">
-            <div className="sidebar">
-              <h1 className="flex items-center h-full justify-center font-bold text-2xl">
-                <span className="text-custom_white">Org</span>Connect
-              </h1>
+        <div className="sidebar bg-gray-900 shadow-lg basis-1/5 text-white">
+          <h1 className="flex justify-center font-bold mt-4 mb-12 text-2xl">
+            <span className="text-custom_orng">Org</span>Connect
+          </h1>
+          <div className="profile flex flex-col items-center">
+            <img
+              src={prf1}
+              alt="profile"
+              className="sidebar_profile border-custom_white  bg-white shadow-md rounded-full"
+            />
+            <div className="flex w-full flex-col items-center my-4">
+              <h1 className="text-xl font-semibold">Rohit Sekh</h1>
+              <p className="mt-2 text-base ">State, India</p>
+              <p className="p-2 my-7 font-main">
+                Intro Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Odio officia et quod sapiente. Tempora ducimus adipisci
+                voluptatem!
+              </p>
             </div>
-            <div className="__body">
-              <ul className="h-full ml-10 flex items-center gap-x-5 text-custom_black font-semibold ">
+          </div>
+        </div>
+        <div className="main_body bg-custom_white basis-4/5 flex flex-col">
+          <div className="__nav basis-1/12 flex drop-shadow-lg">
+            <div className="nav_header  bg-custom_orng ">
+              <div className="h-full ml-10 flex items-center gap-x-5 text-custom_black font-semibold ">
                 <NavLink
-                  className="border-black hover:text-custom_white h-full flex items-center"
-                  to="/home"
+                  to="/Home"
+                  end
+                  className={(isActive) =>
+                    isActive ? activeClass : defaultClass
+                  }
                 >
-                  <li>
-                    <HomeRoundedIcon className="mr-1" />
-                    Home
-                  </li>
+                  <HomeRoundedIcon className="mr-1" />
+                  Home
                 </NavLink>
                 <NavLink
-                  className="border-black hover:text-custom_white h-full flex items-center"
-                  to="/group"
+                  to="/Home/Group"
+                  end
+                  className={(isActive) =>
+                    isActive ? activeClass : defaultClass
+                  }
                 >
-                  <li>
-                    <Groups2Icon className="mr-1" />
-                    Group
-                  </li>
+                  <Groups2Icon className="mr-1" />
+                  Group
                 </NavLink>
                 <NavLink
-                  className="border-black hover:text-custom_white h-full flex items-center"
-                  to="/learn"
+                  to="/Home/Learn"
+                  end
+                  className={(isActive) =>
+                    isActive ? activeClass : defaultClass
+                  }
                 >
-                  <li>
-                    <SchoolIcon className="mr-1" /> Learn
-                  </li>
+                  <SchoolIcon className="mr-1" /> Learn
                 </NavLink>
                 <NavLink
-                  className="border-black hover:text-custom_white h-full flex items-center"
-                  to="/message"
+                  to="/Home/Message"
+                  end
+                  className={(isActive) =>
+                    isActive ? activeClass : defaultClass
+                  }
                 >
-                  <li>
-                    <MailIcon className="mr-1" />
-                    Message
-                  </li>
+                  <MailIcon className="mr-1" />
+                  Message
                 </NavLink>
                 <NavLink
-                  className="border-black hover:text-custom_white h-full flex items-center"
-                  to="/profile"
+                  to="/Home/Profile"
+                  end
+                  className={(isActive) =>
+                    isActive ? activeClass : defaultClass
+                  }
                 >
-                  <li>
-                    <PersonIcon className="mr-1" />
-                    Profile
-                  </li>
+                  <PersonIcon className="mr-1" />
+                  Profile
                 </NavLink>
-              </ul>
+              </div>
             </div>
-            <div className="sidebar flex justify-around items-center">
+            <div className="nav_side_header flex bg-custom_orng justify-around items-center">
               <input
                 className="rounded-2xl border-2 border-black ml-5 px-3 py-1 font-semibold text-sm"
                 type="text"
                 name=""
                 placeholder="search something"
               />
-              <Link to="home" className="hover:text-white font-semibold">
+              <a to="home" className="hover:text-white font-semibold">
                 <LogoutRoundedIcon /> logout
-              </Link>
+              </a>
             </div>
           </div>
-          <div className="main_body bg-gray-200 basis-11/12 flex ">
-            <div className="sidebar bg-gray-900 shadow-lg  text-white">
-              <div className="profile flex flex-col items-center mt-8">
-                <img
-                  src={prf1}
-                  alt="profile"
-                  className="sidebar_profile border-custom_white  bg-white shadow-md rounded-full"
-                />
-                <div className="flex w-full flex-col items-center my-4">
-                  <h1 className="text-xl font-semibold">Rohit Sekh</h1>
-                  <p className="mt-2 text-base ">State, India</p>
-                  <p className="p-2 my-7 font-main">
-                    Intro Lorem ipsum dolor sit amet consectetur, adipisicing
-                    elit. Odio officia et quod sapiente. Tempora ducimus
-                    adipisci voluptatem!
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="__body p-6">
+          <div className="bg-gray-200 basis-11/12 flex ">
+            <div className="body_header p-6">
               <form>
                 <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 ">
                   <div class="flex items-center justify-between px-3 py-2 border-b ">
@@ -148,8 +156,9 @@ export default function HomePage() {
               </form>
               <div className="education mt-5">this </div>
             </div>
+
             <p className="flex self-center w-1 h-3/4 text-center bg-gray-400 rounded-md" />
-            <div className="sidebar ml-2 flex items-center justify-center">
+            <div className="body_side_header ml-2 flex items-center justify-center">
               <h1 className="text-3xl">News Api</h1>
             </div>
           </div>

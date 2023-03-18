@@ -7,16 +7,17 @@
   width: 80px;
   height: 80px;
 }
-.nav_header,
-.body_header {
-  flex: 0.7;
+
+.sidebar{
+  width:23%
 }
-.nav_side_header,
-.body_side_header {
-  flex: 0.3;
+.__body{
+  width:54%;
 }
-.stay_page {
-  border-bottom-width: 3.2px;
+
+/* active navbar */
+.active {
+  border-bottom-width: 2px;
   --tw-border-opacity: 1;
   border-color: #FFF
 }
@@ -28,3 +29,5 @@
   margin: -1px;
   border-width: 0;
 }
+
+

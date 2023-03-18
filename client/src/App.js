@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from './components/Login';
-import Registration from './components/Registration';
+import Login from "./components/Login";
+import Registration from "./components/Registration";
 import PersonalDetails from "./components/Details/RegisterDetails";
-import PersonalDetails2 from './components/Details/EduDetails';
+import PersonalDetails2 from "./components/Details/EduDetails";
 import Skills from "./components/Details/SkillDetails";
-import HomePage from './components/Home';
+import HomePage from "./components/Home";
+import Group from "./components/Group";
+import Learn from "./components/Learn";
+import Message from "./components/Message";
+import Profile from "./components/Profile";
+import Error from "./components/Error";
 
 function App() {
   // const[isLogin, setLogin] = useState(false);
@@ -13,7 +18,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Login />}> */}
         <Route index element={<Login />} />
         <Route path="Home" element={<HomePage />} />
         <Route path="Login" element={<Login />} />
@@ -21,8 +25,11 @@ function App() {
         <Route path="RegisterDetails" element={<PersonalDetails />} />
         <Route path="EduDetails" element={<PersonalDetails2 />} />
         <Route path="Skills" element={<Skills />} />
-        {/* <Route path="*" element={<NoPage />} /> */}
-        {/* </Route> */}
+        <Route path="Group" element={<Group />} />
+        <Route path="Learn" element={<Learn />} />
+        <Route path="Message" element={<Message />} />
+        <Route path="Profile" element={<Profile />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );

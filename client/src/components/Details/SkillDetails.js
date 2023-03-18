@@ -1,4 +1,3 @@
-import { getTablePaginationUnstyledUtilityClass } from "@mui/base";
 import React, { useState } from "react";
 
 
@@ -17,7 +16,7 @@ export default function PersonalDetails() {
   });
 
   const date = new Date().getFullYear();
-  const cur_date = `${date}` + "-12-31";
+  const cur_date = `${date}-12-31`;
 
   const handleChangeAll = (e) => {
     const { name, value } = e.target;
