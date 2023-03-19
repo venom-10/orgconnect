@@ -17,16 +17,16 @@ export default function HomePage() {
     };
     getNews();
   }, []);
-  console.log("n", news);
+  
   return (
     <>
       <div className="main_body bg-gray-200 basis-11/12 flex ">
-        <div className="sidebar bg-gray-900 shadow-lg  text-white">
-          <div className="profile flex flex-col items-center mt-8">
+        <div className="sidebar ml-2 flex p-4  gap-4 items-center">
+          <div className="profile h-full flex flex-col items-center rounded-lg bg-white shadow-lg drop-shadow-lg p-4">
             <img
               src={prf1}
               alt="profile"
-              className="sidebar_profile border-custom_white  bg-white shadow-md rounded-full"
+              className="sidebar_profile border-custom_white mt-4 bg-white shadow-md rounded-full"
             />
             <div className="flex w-full flex-col items-center my-4">
               <h1 className="text-xl font-semibold">Rohit Sekh</h1>
@@ -39,6 +39,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+        {/* <p className="flex self-center w-1 h-3/4 text-center bg-gray-400 rounded-md" /> */}
         <div className="__body p-6">
           <form>
             <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 ">
@@ -98,13 +99,12 @@ export default function HomePage() {
           <div className="news basis-3/4 bg-red-100 rounded-md shadow-md drop-shadow-md p-3 font-main">
             <div className="header flex gap-3 ">
               <p className="w-3 h-3 bg-red-800 self-center rounded-full" />
-              <h1 className="text-lg font-semibold">News</h1>
+              <h1 className="text-lg font-semibold">Today's headline</h1>
             </div>
             <div className="py-2 px-4 gap-3 flex flex-col text-sm font-medium">
-              { news.slice(0, 12).map((item, id)=>(
-                <Topic key={id} title={item.title} url={item.url}/>
-              )) }
-              
+              {news.slice(0, 12).map((item, id) => (
+                <Topic key={id} title={item.title} url={item.url} />
+              ))}
             </div>
           </div>
         </div>
