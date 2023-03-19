@@ -11,6 +11,8 @@ import Learn from "./components/Learn";
 import Message from "./components/Message";
 import Profile from "./components/Profile";
 import Error from "./components/Error";
+import Nav from './components/MainHeader'
+import MainHeader from "./components/MainHeader";
 
 function App() {
   // const[isLogin, setLogin] = useState(false);
@@ -24,8 +26,8 @@ function App() {
         <Route path="RegisterDetails" element={<PersonalDetails />} />
         <Route path="EduDetails" element={<PersonalDetails2 />} />
         <Route path="Skills" element={<Skills />} />
-        <Route path="app">
-          <Route path="Home" element={<HomePage />} />
+        <Route path="app" element={<MainHeader/>}>
+          <Route index path="Home" element={<HomePage />} />
           <Route path="Group" element={<Group />} />
           <Route path="Learn" element={<Learn />} />
           <Route path="Message" element={<Message />} />
