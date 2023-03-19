@@ -17,7 +17,7 @@
 
 /* active navbar */
 .active {
-  border-bottom-width: 2px;
+  border-bottom-width: 3px;
   --tw-border-opacity: 1;
   border-color: #FFF
 }

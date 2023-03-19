@@ -1,5 +1,23 @@
 import prf1 from "../../images/prf2.svg";
+import { useState, useEffect } from "react";
+import Topic from "../NewsTopic";
+import link from "../../images/link.svg";
+
 export default function HomePage() {
+  const [news, setNews] = useState([]);
+
+  const url =
+    "https://newsapi.org/v2/top-headlines?country=in&apiKey=31231c54ff9c49ab839c035b5ef014c1";
+
+  useEffect(() => {
+    const getNews = async () => {
+      const res = await fetch(url);
+      const data = await res.json();
+      setNews(data.articles);
+    };
+    getNews();
+  }, []);
+  console.log("n", news);
   return (
     <>
       <div className="main_body bg-gray-200 basis-11/12 flex ">
@@ -23,35 +41,35 @@ export default function HomePage() {
         </div>
         <div className="__body p-6">
           <form>
-            <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 ">
-              <div class="flex items-center justify-between px-3 py-2 border-b ">
-                <div class="flex flex-wrap items-center  sm:divide-x ">
-                  <div class="flex items-center space-x-1 sm:pr-4">
+            <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 ">
+              <div className="flex items-center justify-between px-3 py-2 border-b ">
+                <div className="flex flex-wrap items-center  sm:divide-x ">
+                  <div className="flex items-center space-x-1 sm:pr-4">
                     <button
                       type="button"
-                      class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 "
+                      className="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 "
                     >
                       <svg
                         aria-hidden="true"
-                        class="w-5 h-5"
+                        className="w-5 h-5"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         ></path>
                       </svg>
 
-                      <span class="sr-only">Attach file</span>
+                      <span className="sr-only">Attach file</span>
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="px-4 py-2 bg-white rounded-b-lg ">
-                <label for="editor" class="sr-only">
+              <div className="px-4 py-2 bg-white rounded-b-lg ">
+                <label htmlFor="editor" className="sr-only">
                   Publish post
                 </label>
                 <textarea
@@ -65,7 +83,7 @@ export default function HomePage() {
             </div>
             <button
               type="submit"
-              class="inline-flex font-main items-center px-5 py-2.5 text-sm font-semibold text-center text-black bg-custom_orng rounded-lg focus:ring-4 focus:ring-blue-200 hover:text-white"
+              className="inline-flex font-main items-center px-5 py-2.5 text-sm font-semibold text-center text-black bg-custom_orng rounded-lg focus:ring-4 focus:ring-blue-200 hover:text-white"
             >
               Post Story
             </button>
@@ -73,8 +91,22 @@ export default function HomePage() {
           <div className="education mt-5">this </div>
         </div>
         <p className="flex self-center w-1 h-3/4 text-center bg-gray-400 rounded-md" />
-        <div className="sidebar ml-2 flex items-center justify-center">
-          <h1 className="text-3xl">News Api</h1>
+        <div className="sidebar ml-2 flex flex-col p-4 gap-4">
+          <div className="suggestion basis-1/4 text-center bg-white rounded-md shadow-md drop-shadow-md">
+            <p className="font-main text-xl font-bold">Profile Suggestion</p>
+          </div>
+          <div className="news basis-3/4 bg-red-100 rounded-md shadow-md drop-shadow-md p-3 font-main">
+            <div className="header flex gap-3 ">
+              <p className="w-3 h-3 bg-red-800 self-center rounded-full" />
+              <h1 className="text-lg font-semibold">News</h1>
+            </div>
+            <div className="py-2 px-4 gap-3 flex flex-col text-sm font-medium">
+              { news.slice(0, 12).map((item, id)=>(
+                <Topic key={id} title={item.title} url={item.url}/>
+              )) }
+              
+            </div>
+          </div>
         </div>
       </div>
     </>

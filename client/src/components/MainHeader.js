@@ -1,11 +1,10 @@
-import { Outlet } from "react-router-dom";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import Groups2Icon from "@mui/icons-material/Groups2";
 import SchoolIcon from "@mui/icons-material/School";
 import MailIcon from "@mui/icons-material/Mail";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 export default function MainHeader() {
   return (
