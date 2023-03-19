@@ -5,13 +5,12 @@ import Registration from "./components/Registration";
 import PersonalDetails from "./components/Details/RegisterDetails";
 import PersonalDetails2 from "./components/Details/EduDetails";
 import Skills from "./components/Details/SkillDetails";
-import HomePage from "./components/Home";
-import Group from "./components/Group";
-import Learn from "./components/Learn";
-import Message from "./components/Message";
-import Profile from "./components/Profile";
+import HomePage from "./components/Body/Home";
+import Group from "./components/Body/Group";
+import Learn from "./components/Body/Learn";
+import Message from "./components/Body/Message";
+import Profile from "./components/Body/Profile";
 import Error from "./components/Error";
-import Nav from './components/MainHeader'
 import MainHeader from "./components/MainHeader";
 
 function App() {
@@ -32,7 +31,7 @@ function App() {
           <Route path="Learn" element={<Learn />} />
           <Route path="Message" element={<Message />} />
           <Route path="Profile" element={<Profile />} />
-          <Route path="*" element={<Error />} />
+          <Route path="app/*" element={<Error />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>

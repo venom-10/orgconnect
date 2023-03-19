@@ -1,4 +1,4 @@
-import prf1 from "../images/prf2.svg";
+import prf1 from "../../images/prf2.svg";
 export default function HomePage() {
   return (
     <>
