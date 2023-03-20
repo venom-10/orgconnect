@@ -15,7 +15,6 @@ function Login() {
 
   const handleDetailsChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setDetails((preValue) => ({
       ...preValue,
       [name]: value,
@@ -33,7 +32,6 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(`Email: ${details.email}, Password: ${details.password}`);
 
     const res = await fetch("/signin", {
       method: "POST",
@@ -48,14 +46,11 @@ function Login() {
 
     const data = await res.json();
     if (data.message === "Invalid Credentials") {
-      console.log("Invalid Credentials");
       setError(true);
     } else {
-      console.log("Login Sucessfull");
       setError(false);
-      //
       localStorage.setItem("email", details.email);
-      navigate("/home");
+      navigate("app/home");
     }
   };
 
@@ -135,13 +130,13 @@ function Login() {
                   </a>
                 </div>
                 <div className="flex flex-col">
-                  <a
-                    href='/app/home'
+                  <button
+                    onClick={handleSubmit}
                     type="submit"
                     className="border-2 border-color2 rounded-full px-12 py-2 my-2 inline-block font-semibold hover:bg-color2 hover:text-white"
                   >
                     Sign in
-                  </a>
+                  </button>
                   <p className="font-bold text-sm text-gray-800">OR</p>
                   <div className="flex justify-center my-2">
                     <a

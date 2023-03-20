@@ -1,12 +1,12 @@
 import prf1 from "../../images/prf2.svg";
 import { useState, useEffect } from "react";
 import Topic from "../NewsTopic";
-import link from "../../images/link.svg";
-import { convertLength } from "@mui/material/styles/cssUtils";
+
 
 export default function HomePage() {
   const [news, setNews] = useState([]);
-  var file_name;
+  const [postData, setPostData] = useState();
+  const [name, setName] = useState();
   const url =
     "https://newsapi.org/v2/top-headlines?country=in&apiKey=31231c54ff9c49ab839c035b5ef014c1";
 
@@ -43,7 +43,7 @@ export default function HomePage() {
         {/* <p className="flex self-center w-1 h-3/4 text-center bg-gray-400 rounded-md" /> */}
         <div className="__body p-6">
           <form>
-            <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 ">
+            <div className="w-full mb-4 border border-gray-200 rounded-lg shadow-lg bg-gray-50 ">
               <div className="flex items-center justify-between px-3 py-2 border-b ">
                 <div className="flex flex-wrap items-center  sm:divide-x ">
                   <div className="flex items-center space-x-1 sm:pr-4">
@@ -69,11 +69,10 @@ export default function HomePage() {
                         type="file"
                         name="posted_file"
                         onChange={(e) => {
-                          file_name = e.target.files[0].name;
-                          
+                          setName(e.target.files[0].name)
                         }}
                       />
-                      <span className="">hi, {file_name}</span>
+                      <span className="ml-2 font-medium font-main">{name}</span>
                     </label>
                   </div>
                 </div>
@@ -83,11 +82,13 @@ export default function HomePage() {
                   Publish post
                 </label>
                 <textarea
-                  id="editor"
+                  value={postData}
+                  onChange={(e)=>{setPostData(e.target.value)}}
                   rows="8"
                   className="font-main block w-full text-sm font-medium text-gray-800 bg-white border-0 resize-none p-2"
                   placeholder="Write an article..."
                   required
+                  autoFocus={true}
                 ></textarea>
               </div>
             </div>

@@ -21,13 +21,6 @@
   --tw-border-opacity: 1;
   border-color: #FFF
 }
-.sr1-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  border-width: 0;
-}
+
 
 

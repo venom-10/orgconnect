@@ -16,6 +16,8 @@ export default function PersonalDetails() {
     profile: "",
   });
 
+  const [fname, setFname] = useState(null);
+
   const date = new Date().getFullYear();
   const cur_date = `${date}-12-31`;
 
@@ -27,6 +29,15 @@ export default function PersonalDetails() {
       ...preValue,
       [name]: value,
     }));
+  };
+
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    setRegisterDetails((preValue) => ({
+      ...preValue,
+      [name]: value,
+    }));
+    setFname(e.target.files[0].name);
   };
 
   const handleSubmit = (e) => {
@@ -44,8 +55,7 @@ export default function PersonalDetails() {
     localStorage.setItem("state", registerDetails.state);
     localStorage.setItem("address", registerDetails.address);
     localStorage.setItem("dob", registerDetails.dob);
-    
-  }
+  };
 
   return (
     <>
@@ -212,20 +222,21 @@ export default function PersonalDetails() {
                     htmlFor="file-upload"
                     className="p-4 text_org relative cursor-pointer rounded-md font-medium hover:text-custom_orng hover:italic"
                   >
-                    <span>Upload Profile</span>
+                    <span>{fname === null ? "Upload image" : fname}</span>
                     <input
                       id="file-upload"
                       name="profile"
                       value={registerDetails.profile}
-                      onChange={handleChangeAll}
+                      onChange={handleChangeInput}
+                      accept="image/png, image/gif, image/jpeg"
                       type="file"
-                      className="sr-only"
+                      className="hidden"
                     />{" "}
                   </label>
                 </div>
                 <div className="flex justify-end items-center w-full mt-5 mb-3">
                   <button
-                    onClick = {storeData}
+                    onClick={storeData}
                     className="inline-flex justify-center rounded-md border py-2 px-4 text-md font-medium bg-color2 hover:bg-color1 hover:text-color2"
                   >
                     Save and Next
