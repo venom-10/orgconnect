@@ -2,10 +2,11 @@ import prf1 from "../../images/prf2.svg";
 import { useState, useEffect } from "react";
 import Topic from "../NewsTopic";
 import link from "../../images/link.svg";
+import { convertLength } from "@mui/material/styles/cssUtils";
 
 export default function HomePage() {
   const [news, setNews] = useState([]);
-
+  var file_name;
   const url =
     "https://newsapi.org/v2/top-headlines?country=in&apiKey=31231c54ff9c49ab839c035b5ef014c1";
 
@@ -17,7 +18,7 @@ export default function HomePage() {
     };
     getNews();
   }, []);
-  
+
   return (
     <>
       <div className="main_body bg-gray-200 basis-11/12 flex ">
@@ -46,9 +47,9 @@ export default function HomePage() {
               <div className="flex items-center justify-between px-3 py-2 border-b ">
                 <div className="flex flex-wrap items-center  sm:divide-x ">
                   <div className="flex items-center space-x-1 sm:pr-4">
-                    <button
+                    <label
                       type="button"
-                      className="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 "
+                      className="p-2 flex text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100"
                     >
                       <svg
                         aria-hidden="true"
@@ -63,9 +64,17 @@ export default function HomePage() {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-
-                      <span className="sr-only">Attach file</span>
-                    </button>
+                      <input
+                        className="hidden"
+                        type="file"
+                        name="posted_file"
+                        onChange={(e) => {
+                          file_name = e.target.files[0].name;
+                          
+                        }}
+                      />
+                      <span className="">hi, {file_name}</span>
+                    </label>
                   </div>
                 </div>
               </div>
