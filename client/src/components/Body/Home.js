@@ -22,17 +22,17 @@ export default function HomePage() {
   return (
     <>
       <div className="main_body bg-gray-200 basis-11/12 flex ">
-        <div className="sidebar ml-2 flex p-4  gap-4 items-center">
-          <div className="profile h-full flex flex-col items-center rounded-lg bg-white shadow-lg drop-shadow-lg p-4">
+      <div className="sidebar ml-2 flex p-4 gap-4 items-center">
+          <div className="profile h-full flex flex-col items-center rounded-lg bg-color2 shadow-lg drop-shadow-lg p-6">
             <img
               src={prf1}
               alt="profile"
               className="sidebar_profile border-custom_white mt-4 bg-white shadow-md rounded-full"
             />
-            <div className="flex w-full flex-col items-center my-4">
-              <h1 className="text-xl font-semibold">Rohit Sekh</h1>
+            <div className="flex w-full flex-col items-center my-4 text-custom_white">
+              <h1 className="text-xl font-semibold">Swetank Sinha</h1>
               <p className="mt-2 text-base ">State, India</p>
-              <p className="p-2 my-7 font-main">
+              <p className="p-2 my-7 text-center font-main">
                 Intro Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Odio officia et quod sapiente. Tempora ducimus adipisci
                 voluptatem!
@@ -43,13 +43,13 @@ export default function HomePage() {
         {/* <p className="flex self-center w-1 h-3/4 text-center bg-gray-400 rounded-md" /> */}
         <div className="__body p-6">
           <form>
-            <div className="w-full mb-4 border border-gray-200 rounded-lg shadow-lg bg-gray-50 ">
+          <div className="w-full mb-4 border border-gray-300 rounded-lg bg-gray-50 shadow-lg drop-shadow-lg">
               <div className="flex items-center justify-between px-3 py-2 border-b ">
                 <div className="flex flex-wrap items-center  sm:divide-x ">
-                  <div className="flex items-center space-x-1 sm:pr-4">
+                  <div className="flex items-center space-x-1 sm:pr-4 flex-col">
                     <label
                       type="button"
-                      className="p-2 flex text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100"
+                      className="p-2 flex text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-50"
                     >
                       <svg
                         aria-hidden="true"
@@ -85,7 +85,7 @@ export default function HomePage() {
                   value={postData}
                   onChange={(e)=>{setPostData(e.target.value)}}
                   rows="8"
-                  className="font-main block w-full text-sm font-medium text-gray-800 bg-white border-0 resize-none p-2"
+                  className="font-main block w-full text-md font-medium text-gray-800 bg-white border-0 resize-none p-2"
                   placeholder="Write an article..."
                   required
                   autoFocus={true}
@@ -102,17 +102,16 @@ export default function HomePage() {
           <div className="education mt-5">this </div>
         </div>
         <p className="flex self-center w-1 h-3/4 text-center bg-gray-400 rounded-md" />
-        <div className="sidebar ml-2 flex flex-col p-4 gap-4">
-          <div className="suggestion basis-1/4 text-center bg-white rounded-md shadow-md drop-shadow-md">
-            <p className="font-main text-xl font-bold">Profile Suggestion</p>
+        <div className="sidebar ml-2 flex flex-col p-4 gap-6 ">
+          <div className="suggestion basis-1/4 text-center bg-white rounded-md shadow-md drop-shadow-md mt-2">
+            <p className="font-main text-xl font-bold m-5">Profile Suggestion</p>
           </div>
-          <div className="news basis-3/4 bg-red-100 rounded-md shadow-md drop-shadow-md p-3 font-main">
+          <div className="news basis-3/4 bg-white rounded-md shadow-md drop-shadow-md p-3 font-main">
             <div className="header flex gap-3 ">
-              <p className="w-3 h-3 bg-red-800 self-center rounded-full" />
-              <h1 className="text-lg font-semibold">Today's headline</h1>
+              <h1 className="text-xl p-4 pt-2 font-bold">Today's headline</h1>
             </div>
             <div className="py-2 px-4 gap-3 flex flex-col text-sm font-medium">
-              {news.slice(0, 12).map((item, id) => (
+              {news.slice(0, 11).map((item, id) => (
                 <Topic key={id} title={item.title} url={item.url} />
               ))}
             </div>

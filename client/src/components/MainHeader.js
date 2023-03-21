@@ -4,6 +4,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import MailIcon from "@mui/icons-material/Mail";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import QuizIcon from '@mui/icons-material/Quiz';
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 export default function MainHeader() {
@@ -11,16 +12,16 @@ export default function MainHeader() {
     <>
       <div className="home flex  w-screen h-screen bg-custom_white">
         <div className="main_body bg-custom_white w-full flex flex-col">
-          <div className="__nav basis-1/12 flex drop-shadow-lg bg-custom_orng">
+          <div className="__nav basis-1/12 flex drop-shadow-lg bg-color2">
             <div className="sidebar">
-              <h1 className="flex items-center h-full justify-center font-bold text-2xl">
-                <span className="text-custom_white">Org</span>Connect
+              <h1 className="flex items-center h-full justify-center font-bold text-white text-2xl">
+                <span className="text-custom_orng">Org</span>Connect
               </h1>
             </div>
             <div className="__body">
-              <ul className="h-full ml-10 flex items-center gap-x-5 text-custom_black font-semibold ">
+              <ul className="h-full ml-10 flex items-center gap-x-5 text-custom_white font-semibold ">
                 <NavLink
-                  className="border-black hover:text-custom_white h-full flex items-center"
+                  className="border-black hover:text-custom_orng h-full flex items-center"
                   to="/app/home"
                 >
                   <li>
@@ -29,7 +30,7 @@ export default function MainHeader() {
                   </li>
                 </NavLink>
                 <NavLink
-                  className="border-black hover:text-custom_white h-full flex items-center"
+                  className="border-black hover:text-custom_orng h-full flex items-center"
                   to="/app/group"
                 >
                   <li>
@@ -38,7 +39,7 @@ export default function MainHeader() {
                   </li>
                 </NavLink>
                 <NavLink
-                  className="border-black hover:text-custom_white h-full flex items-center"
+                  className="border-black hover:text-custom_orng h-full flex items-center"
                   to="/app/learn"
                 >
                   <li>
@@ -46,16 +47,16 @@ export default function MainHeader() {
                   </li>
                 </NavLink>
                 <NavLink
-                  className="border-black hover:text-custom_white h-full flex items-center"
+                  className="border-black hover:text-custom_orng h-full flex items-center"
                   to="/app/message"
                 >
                   <li>
-                    <MailIcon className="mr-1" />
-                    Message
+                    <QuizIcon className="mr-1" />
+                    Ask AI
                   </li>
                 </NavLink>
                 <NavLink
-                  className="border-black hover:text-custom_white h-full flex items-center"
+                  className="border-black hover:text-custom_orng h-full flex items-center"
                   to="/app/profile"
                 >
                   <li>
@@ -65,14 +66,14 @@ export default function MainHeader() {
                 </NavLink>
               </ul>
             </div>
-            <div className="sidebar flex justify-around items-center">
+            <div className="sidebar flex justify-around items-center text-white">
               <input
                 className="rounded-2xl border-2 border-black ml-5 px-3 py-1 font-semibold text-sm"
                 type="text"
                 name=""
-                placeholder="search something"
+                placeholder="Search"
               />
-              <Link to="home" className="hover:text-white font-semibold">
+              <Link to="home" className="hover:text-custom_orng font-semibold">
                 <LogoutRoundedIcon /> logout
               </Link>
             </div>

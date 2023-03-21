@@ -9,7 +9,8 @@ module.exports = {
         custom_blue: "#4285F4",
         custom_orng: "#FF9F29",
         custom_black: "#161616",
-        custom_white: "#ffffff"
+        custom_white: "#ffffff",
+        custom_bg: "#EFF5F5"
       },
       fontFamily:{
         main:"Inter"

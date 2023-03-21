@@ -7,7 +7,7 @@ export default function NewsTopic(p) {
     <>
       <div className="flex items-center">
         <p className="truncate text-center w-11/12">
-          <p className="w-2 h-2 rounded-full bg-red-800 inline-block mr-1"/>
+          <p className="w-2 h-2 rounded-full bg-custom_orng inline-block mr-1"/>
           {title}
         </p>
         <a className="w-1/12 flex justify-center" href={url}>
