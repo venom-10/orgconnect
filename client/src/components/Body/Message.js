@@ -1,21 +1,21 @@
 import { Configuration, OpenAIApi } from "openai";
-import OptionSelection from './Ai/OptionSelection';
+import OptionSelection from "./Ai/OptionSelection";
 import Translation from "./Ai/Translation";
 import { arrayItems } from "../AiOptions";
 import { useState } from "react";
-import './Ai/Message.css'
 
 function Message() {
+  
+  console.log('env', process.env.REACT_APP_API_KEY);
 
-  console.log(process.env.REACT_APP_Open_AI_Key)
   const configuration = new Configuration({
-    apiKey: process.env.REACT_APP_Open_AI_Key
+    apiKey: process.env.REACT_APP_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
   const [option, setOption] = useState({});
   const [result, setResult] = useState("");
   const [input, setInput] = useState("");
-  // console.log(import.meta.env.VITE_Open_AI_Key);
+
   const selectOption = (option) => {
     setOption(option);
   };
@@ -29,7 +29,7 @@ function Message() {
   };
 
   return (
-    <div className="App">
+    <div className="bg-gray-100 basis-11/12 py-14">
       {Object.values(option).length === 0 ? (
         <OptionSelection arrayItems={arrayItems} selectOption={selectOption} />
       ) : (
