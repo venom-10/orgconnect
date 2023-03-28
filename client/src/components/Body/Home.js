@@ -85,7 +85,7 @@ export default function HomePage() {
                   value={postData}
                   onChange={(e)=>{setPostData(e.target.value)}}
                   rows="8"
-                  className="font-main block w-full text-md font-medium text-gray-800 bg-white border-0 resize-none p-2"
+                  className="font-main block w-full text-md font-medium text-gray-800 bg-white border-0 resize-none p-2 focus:outline-none"
                   placeholder="Write an article..."
                   required
                   autoFocus={true}

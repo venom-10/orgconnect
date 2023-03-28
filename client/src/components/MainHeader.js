@@ -10,9 +10,9 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 export default function MainHeader() {
   return (
     <>
-      <div className="home flex  w-screen h-screen bg-custom_white">
+      <div className="home flex w-screen h-screen bg-custom_white">
         <div className="main_body bg-custom_white w-full flex flex-col">
-          <div className="__nav basis-1/12 flex drop-shadow-lg bg-color2">
+          <div className="__nav basis-1/12 shrink-0 flex drop-shadow-lg bg-color2">
             <div className="sidebar">
               <h1 className="flex items-center h-full justify-center font-bold text-white text-2xl">
                 <span className="text-custom_orng">Org</span>Connect
