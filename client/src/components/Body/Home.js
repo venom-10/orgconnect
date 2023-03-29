@@ -1,7 +1,7 @@
 import prf1 from "../../images/prf2.svg";
 import { useState, useEffect } from "react";
 import Topic from "../NewsTopic";
-
+import Post from "./Post";
 
 export default function HomePage() {
   const [news, setNews] = useState([]);
@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <>
       <div className="main_body bg-gray-200 basis-11/12 flex ">
-      <div className="sidebar ml-2 flex p-4 gap-4 items-center">
+        <div className="sidebar ml-2 flex p-4 gap-4 items-center">
           <div className="profile h-full flex flex-col items-center rounded-lg bg-color2 shadow-lg drop-shadow-lg p-6">
             <img
               src={prf1}
@@ -43,7 +43,7 @@ export default function HomePage() {
         {/* <p className="flex self-center w-1 h-3/4 text-center bg-gray-400 rounded-md" /> */}
         <div className="__body p-6">
           <form>
-          <div className="w-full mb-4 border border-gray-300 rounded-lg bg-gray-50 shadow-lg drop-shadow-lg">
+            <div className="w-full mb-4 border border-gray-300 rounded-lg bg-gray-50 shadow-lg drop-shadow-lg">
               <div className="flex items-center justify-between px-3 py-2 border-b ">
                 <div className="flex flex-wrap items-center  sm:divide-x ">
                   <div className="flex items-center space-x-1 sm:pr-4 flex-col">
@@ -69,7 +69,7 @@ export default function HomePage() {
                         type="file"
                         name="posted_file"
                         onChange={(e) => {
-                          setName(e.target.files[0].name)
+                          setName(e.target.files[0].name);
                         }}
                       />
                       <span className="ml-2 font-medium font-main">{name}</span>
@@ -83,7 +83,9 @@ export default function HomePage() {
                 </label>
                 <textarea
                   value={postData}
-                  onChange={(e)=>{setPostData(e.target.value)}}
+                  onChange={(e) => {
+                    setPostData(e.target.value);
+                  }}
                   rows="8"
                   className="font-main block w-full text-md font-medium text-gray-800 bg-white border-0 resize-none p-2 focus:outline-none"
                   placeholder="Write an article..."
@@ -99,12 +101,17 @@ export default function HomePage() {
               Post Story
             </button>
           </form>
-          <div className="education mt-5">this </div>
+          <div className="education mt-5">
+            <Post />
+            <Post />
+          </div>
         </div>
         <p className="flex self-center w-1 h-3/4 text-center bg-gray-400 rounded-md" />
-        <div className="sidebar ml-2 flex flex-col p-4 gap-6 ">
+        <div className="sidebar ml-2 flex flex-col p-4 gap-6">
           <div className="suggestion basis-1/4 text-center bg-white rounded-md shadow-md drop-shadow-md mt-2">
-            <p className="font-main text-xl font-bold m-5">Profile Suggestion</p>
+            <p className="font-main text-xl font-bold m-5">
+              Profile Suggestion
+            </p>
           </div>
           <div className="news basis-3/4 bg-white rounded-md shadow-md drop-shadow-md p-3 font-main">
             <div className="header flex gap-3 ">
