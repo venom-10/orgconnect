@@ -1,5 +1,5 @@
 import React from "react";
-import link from "../images/link.svg";
+import link from "../../../images/link.svg";
 
 export default function NewsTopic(p) {
   const { title, url } = p;

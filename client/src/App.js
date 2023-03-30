@@ -5,7 +5,7 @@ import Registration from "./components/Registration";
 import PersonalDetails from "./components/Details/RegisterDetails";
 import PersonalDetails2 from "./components/Details/EduDetails";
 import Skills from "./components/Details/SkillDetails";
-import HomePage from "./components/Body/Home";
+import HomePage from "./components/Body/HomePage/Home";
 import Group from "./components/Body/Group";
 import Learn from "./components/Body/Learn";
 import Message from "./components/Body/Message";
@@ -25,7 +25,7 @@ function App() {
         <Route path="RegisterDetails" element={<PersonalDetails />} />
         <Route path="EduDetails" element={<PersonalDetails2 />} />
         <Route path="Skills" element={<Skills />} />
-        <Route path="app" element={<MainHeader/>}>
+        <Route path="app" element={<MainHeader />}>
           <Route index path="Home" element={<HomePage />} />
           <Route path="Group" element={<Group />} />
           <Route path="Learn" element={<Learn />} />
