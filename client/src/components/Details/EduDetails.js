@@ -463,6 +463,7 @@ export default function PersonalDetails() {
                   </label>
                   <input
                     required
+                    
                     type="date"
                     value={registerDetails.phd_date}
                     onChange={handleChangeAll}

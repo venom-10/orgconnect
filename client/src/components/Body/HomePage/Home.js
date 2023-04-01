@@ -32,7 +32,7 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="main_body bg-gray-200 basis-11/12 flex ">
+      <div className="body bg-gray-200 basis-11/12 flex ">
         <ProfileSidebar />
         <p className="mt-14 w-1 h-2/3 text-center bg-gray-400 rounded-md" />
         <div className="__body p-6">
@@ -97,6 +97,7 @@ export default function HomePage() {
             </button>
           </form>
 
+          <PostedData />
           <PostedData />
         </div>
         <p className="mt-14 w-1 h-2/3 text-center bg-gray-400 rounded-md" />

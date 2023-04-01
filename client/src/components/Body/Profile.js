@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 export default function Profile() {
   return (
-    <div>
-      <div className="text-3xl">hi, This is Learn Component</div>
-    </div>
+    <>
+      <div className="bg-gray-100 basis-11/12 pt-3 py-4">
+        
+      </div>
+    </>
   );
 }
