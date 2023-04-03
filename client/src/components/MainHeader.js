@@ -68,7 +68,7 @@ export default function MainHeader() {
             </div>
             <div className="sidebar flex justify-around items-center text-white">
               <input
-                className="rounded-2xl border-2 border-black ml-5 px-3 py-1 font-semibold text-sm"
+                className="rounded-2xl focus:outline-none border-2 border-black ml-5 px-3 py-1 font-semibold text-sm text-custom_black"
                 type="text"
                 name=""
                 placeholder="Search"
