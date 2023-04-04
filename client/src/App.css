@@ -13,8 +13,14 @@
   max-height: 640px;
 }
 
+.bar{
+  height: 530px;
+}
 .__body{
   width:54%;
+}
+.post{
+  max-width: 744px;
 }
 
 /* active navbar */
@@ -26,16 +32,13 @@
 
 
 
-/* OptionBOX */
+/* OptionBOX chatAI */
 
 .option_box{
   width: 450px;
   height: 150px;
 }
 
-
-
-/* Profile Section */
-section{
-  height: 500px;
+.posted_img{
+  max-height: 450px;
 }

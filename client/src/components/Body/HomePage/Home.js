@@ -34,7 +34,7 @@ export default function HomePage() {
     <>
       <div className="body bg-gray-200 basis-11/12 flex ">
         <ProfileSidebar />
-        <p className="mt-14 w-1 h-2/3 text-center bg-gray-400 rounded-md" />
+        <p className="bar mt-14 w-1 text-center bg-gray-400 rounded-md" />
         <div className="__body p-6">
           <form onSubmit={handleSubmit}>
             <div className="w-full mb-4 border border-gray-300 rounded-lg bg-gray-50 shadow-lg drop-shadow-lg">
@@ -96,11 +96,9 @@ export default function HomePage() {
               Post Story
             </button>
           </form>
-
-          <PostedData />
           <PostedData />
         </div>
-        <p className="mt-14 w-1 h-2/3 text-center bg-gray-400 rounded-md" />
+        <p className="bar mt-14 w-1 text-center bg-gray-400 rounded-md" />
         <SideBar />
       </div>
     </>
