@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import sample from '../../images/img2.avif'
 import sample2 from "../../images/prf1.svg";
 import { Buffer } from "buffer";
 
