@@ -20,7 +20,7 @@ export default function PostedData() {
 
   return (
     <div className="education mt-5 flex flex-col gap-4">
-      {postedData.slice(0, 10).map((data)=>(
+      {postedData.map((data)=>(
         <Post 
           key={data._id}
           postedImage={data.postedImage}

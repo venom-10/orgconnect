@@ -135,10 +135,13 @@ router.post("/userDetails", async (req, res) => {
 router.post("/upload", upload.single("postedImage"), async (req, res) => {
   try {
     const { username, postedText } = req.body;
-    const postedImage = {
-      data: req.file.buffer,
-      contentType: req.file.mimetype,
-    };
+    let postedImage;
+    if (req.file) {
+      postedImage = {
+        data: req.file.buffer,
+        contentType: req.file.mimetype,
+      };
+    }
     const newPost = new postData({ username, postedText, postedImage });
     const post = await newPost.save();
     res.status(200).send("File uploaded successfully!");

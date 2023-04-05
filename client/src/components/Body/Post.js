@@ -35,7 +35,7 @@ export default function Post({ postedImage, postedText, username }) {
           </p>
         </button>
         {imageSrc && (
-          <img className="rounded-md shadow-md mt-3 posted_img" src={imageSrc} alt="" />
+          <img className="rounded-md shadow-md mt-3 posted_img" src={imageSrc} alt="posted_image" />
         )}
       </div>
     </>
