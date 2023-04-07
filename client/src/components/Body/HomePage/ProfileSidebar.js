@@ -2,7 +2,7 @@ import prf1 from "../../../images/prf2.svg";
 
 export default function ProfileSidebar() {
   return (
-    <div className="sidebar ml-2 flex p-4 gap-4 items-center">
+    <div className="sidebar ml-2 flex p-4 gap-4 items-center ">
       <div className="profile h-full flex flex-col items-center rounded-lg bg-color2 shadow-lg drop-shadow-lg p-6">
         <img
           src={prf1}

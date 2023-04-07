@@ -32,7 +32,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     const res = await fetch("/signin", {
       method: "POST",
       headers: {
@@ -49,7 +49,7 @@ function Login() {
       setError(true);
     } else {
       setError(false);
-      localStorage.setItem("email", details.email);
+      sessionStorage.setItem("email", details.email);
       navigate("app/home");
     }
   };

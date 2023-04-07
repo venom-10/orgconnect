@@ -1,13 +1,26 @@
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import Groups2Icon from "@mui/icons-material/Groups2";
 import SchoolIcon from "@mui/icons-material/School";
-import MailIcon from "@mui/icons-material/Mail";
+import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import QuizIcon from '@mui/icons-material/Quiz';
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function MainHeader() {
+  const [login, setLogin] = useState(false)
+  
+  useEffect(() => {
+    if (sessionStorage.getItem("email")) {
+      setLogin(true);
+    }
+  }, []);
+
+  const handleLogOut = ()=>{
+    localStorage.removeItem('user')
+    sessionStorage.removeItem('email')
+  }
   return (
     <>
       <div className="home">
@@ -73,8 +86,13 @@ export default function MainHeader() {
                 name=""
                 placeholder="Search"
               />
-              <Link to="home" className="hover:text-custom_orng font-semibold">
-                <LogoutRoundedIcon /> logout
+              <Link
+                to="/"
+                className="hover:text-custom_orng font-semibold"
+                onClick={handleLogOut}
+              >
+                {login ? <LogoutRoundedIcon /> : <LoginRoundedIcon />}{" "}
+                {login ? "logout" : "login"}
               </Link>
             </div>
           </div>

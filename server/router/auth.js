@@ -22,9 +22,9 @@ router.post("/register", async (req, res) => {
 
   try {
     const userExist = await Logindb.findOne({ email: email });
-
-    if (userExist) {
-      return res.status(422).json({ message: "Email already exists" });
+    const userExistWithName = await Logindb.findOne({ name:name })
+    if (userExist || userExistWithName) {
+      return res.status(422).json({ message: "Email or Name already exists" });
     } else if (password != cpassword) {
       return res
         .status(422)

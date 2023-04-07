@@ -69,10 +69,10 @@ function RegistrationForm() {
     });
 
     const data = await res.json();
-    console.log(data);
-    if (data.message === "Email already exists") {
-      console.log("Email already exists");
-      setError("Email already exists");
+    
+    if (res.status === 422) {
+      console.log("Email or name already exists");
+      setError("Email or name already exists");
       setshowError(true);
     } else if (
       data.message === "Make sure password and current password are same"
@@ -81,7 +81,7 @@ function RegistrationForm() {
       setError("Password and confirm password are different");
       setshowError(true);
     } else {
-      localStorage.setItem("email", email);
+      sessionStorage.setItem('email', email);
       setTimeout(() => {
         navigate(`/RegisterDetails`);
       }, 2000);

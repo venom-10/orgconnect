@@ -1,19 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SideBar from "./SideBar";
 import ProfileSidebar from "./ProfileSidebar";
 import PostedData from "./PostedData";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function HomePage() {
   const [name, setName] = useState();
   const [postedText, setPostedText] = useState("");
   const [postedImage, setPostedImage] = useState(null);
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("email")) {
+      setUser(sessionStorage.getItem("email"));
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('click')
     const formData = new FormData();
-    formData.append("username", "anonymous");
-    formData.append("postedText", postedText);
+    if (!user) {
+      toast.info("Plese log in!", {
+        position: "top-center",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return 
+    }
+    if(!postedText.trim()) return 
+    formData.append("username", user);
+    formData.append("postedText", postedText.trim());
     formData.append("postedImage", postedImage);
     try {
       const data = await fetch("/upload", {
@@ -23,11 +45,11 @@ export default function HomePage() {
       const res = await data.text();
       console.log(res);
     } catch (err) {
-      console.log('err',err);
+      console.log("err", err);
     }
-    setPostedImage(null)
-    setPostedText('')
-    setName('')
+    setPostedImage(null);
+    setPostedText("");
+    setName("");
   };
 
   return (
@@ -95,6 +117,7 @@ export default function HomePage() {
             >
               Post Story
             </button>
+            <ToastContainer/>
           </form>
           <PostedData />
         </div>
