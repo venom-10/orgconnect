@@ -11,7 +11,8 @@ export default function PersonalDetails() {
     city: "",
     state: "",
     address: "",
-    dob: "00-00-0000"
+    dob: "00-00-0000",
+    intro:""
   });
 
   
@@ -19,7 +20,6 @@ export default function PersonalDetails() {
   const date = new Date().getFullYear();
   const cur_date = `${date}-12-31`;
 
-  console.log(registerDetails);
 
   const handleChangeAll = (e) => {
     const { name, value } = e.target;
@@ -46,6 +46,7 @@ export default function PersonalDetails() {
     localStorage.setItem("state", registerDetails.state);
     localStorage.setItem("address", registerDetails.address);
     localStorage.setItem("dob", registerDetails.dob);
+    localStorage.setItem("intro", registerDetails.intro);
   };
 
   return (
@@ -201,11 +202,27 @@ export default function PersonalDetails() {
                     name="dob"
                     id="first_name"
                     max={cur_date}
-                    className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
                 </div>
-                <div className="flex justify-end items-center w-full mt-5 mb-3"></div>
+                <div className="Intro">
+                  <label
+                    htmlFor="Intro"
+                    className="block mb-2 text-base font-medium text-white"
+                  >
+                    Intro
+                  </label>
+                  <textarea
+                    className="rounded-md text-custom_black text-sm p-2 font-medium"
+                    value={registerDetails.intro}
+                    onChange={handleChangeAll}
+                    name="intro"
+                    id=""
+                    cols="60"
+                    rows="2"
+                  ></textarea>
+                </div>
                 <div className="flex justify-end items-center w-full mt-5 mb-3">
                   <button
                     onClick={storeData}

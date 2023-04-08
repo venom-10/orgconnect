@@ -37,6 +37,7 @@ export default function PersonalDetails() {
   const state = localStorage.getItem("state");
   const address = localStorage.getItem("address");
   const dob = localStorage.getItem("dob");
+  const intro = localStorage.getItem('intro')
   const sename = localStorage.getItem("sename");
   const seper = localStorage.getItem("seper");
   const sepy = localStorage.getItem("sepy");
@@ -84,6 +85,7 @@ export default function PersonalDetails() {
         state:state,
         address:address,
         dob:dob,
+        intro:intro,
         secondarySchool:sename,
         secondaryPercent:seper,
         secondaryPassingYear:sepy,
