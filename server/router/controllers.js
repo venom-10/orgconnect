@@ -185,7 +185,6 @@ router.get('/getUserImage', async (req, res)=>{
     const result = await Logindb.find({email})
     const Data = result[0].profile;
     res.json(Data)
-    console.log(Data);
     res.end()
   }
   catch(err){
