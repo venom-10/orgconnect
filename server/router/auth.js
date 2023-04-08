@@ -55,7 +55,8 @@ router.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
-      return res.status(400).json("Please Fill the data");
+      
+      return res.status(400).json({error:"Please Fill the data"});
     }
 
     const userLogin = await Logindb.findOne({ email: email });

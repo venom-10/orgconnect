@@ -331,7 +331,6 @@ export default function PersonalDetails() {
                     Post Graduation
                   </label>
                   <input
-                    required
                     type="text"
                     value={registerDetails.pg_deg}
                     onChange={handleChangeAll}
@@ -349,7 +348,6 @@ export default function PersonalDetails() {
                     College / University
                   </label>
                   <input
-                    required
                     type="text"
                     value={registerDetails.pg_name}
                     onChange={handleChangeAll}
@@ -367,7 +365,6 @@ export default function PersonalDetails() {
                     Passing Year
                   </label>
                   <input
-                    required
                     type="text"
                     value={registerDetails.pg_py}
                     onChange={handleChangeAll}
@@ -385,7 +382,6 @@ export default function PersonalDetails() {
                     CGPA
                   </label>
                   <input
-                    required
                     type="text"
                     value={registerDetails.pg_cgpa}
                     onChange={handleChangeAll}
@@ -408,7 +404,6 @@ export default function PersonalDetails() {
                     Specialization
                   </label>
                   <input
-                    required
                     type="text"
                     value={registerDetails.phd_speci}
                     onChange={handleChangeAll}
@@ -426,7 +421,6 @@ export default function PersonalDetails() {
                     Title of Research
                   </label>
                   <input
-                    required
                     type="text"
                     value={registerDetails.phd_title}
                     onChange={handleChangeAll}
@@ -444,7 +438,6 @@ export default function PersonalDetails() {
                     College / University
                   </label>
                   <input
-                    required
                     type="text"
                     value={registerDetails.phd_name}
                     onChange={handleChangeAll}
@@ -462,8 +455,6 @@ export default function PersonalDetails() {
                     Date of Accomplishment
                   </label>
                   <input
-                    required
-                    
                     type="date"
                     value={registerDetails.phd_date}
                     onChange={handleChangeAll}

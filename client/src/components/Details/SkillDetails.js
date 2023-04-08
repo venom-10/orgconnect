@@ -28,7 +28,7 @@ export default function PersonalDetails() {
     }));
   };
 
-  const email = localStorage.getItem("email");
+  const email = sessionStorage.getItem("email");
   const fname = localStorage.getItem("fname");
   const lname = localStorage.getItem("lname");
   const phn = localStorage.getItem("phn");
@@ -210,7 +210,6 @@ export default function PersonalDetails() {
                     onChange={handleChangeAll}
                     name="w_exp"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-grey-100 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required
                   />
                 </div>
                 <div className="percentage">
@@ -226,7 +225,6 @@ export default function PersonalDetails() {
                     onChange={handleChangeAll}
                     name="j_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required
                   />
                 </div>
                 <div className="passing_year">
@@ -242,7 +240,6 @@ export default function PersonalDetails() {
                     onChange={handleChangeAll}
                     name="cmp_name"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required
                   />
                 </div>
                 <div className="h_board">
@@ -259,7 +256,6 @@ export default function PersonalDetails() {
                     name="st_date"
                     max={cur_date}
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required
                   />
                 </div>
                 <div className="passing_year">
@@ -275,7 +271,6 @@ export default function PersonalDetails() {
                     onChange={handleChangeAll}
                     name="job_loc"
                     className="bg-gray-100 border text-gray-900 text-sm font-medium rounded-md shadow-sm shadow-gray-600 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-200 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required
                   />
                 </div>
                 <div className="s_board">

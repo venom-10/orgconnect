@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require("multer");
 
 require("../db/conn");
+const Logindb = require('../model/loginSchema')
 const Personaldb = require("../model/personalDeatailsSchema");
 const postData = require("../model/postDataSchema");
 
@@ -172,6 +173,21 @@ router.get('/getUser', async (req, res)=>{
   }
   catch(err){
     console.log(err);
+  }
+})
+
+// Getting UserImage
+router.get('/getUserImage', async (req, res)=>{
+  try{
+    const email = req.query.email;
+    const result = await Logindb.find({email})
+    const Data = result[0].profile;
+    res.json(Data)
+    console.log(Data);
+    res.end()
+  }
+  catch(err){
+    console.log(err)
   }
 })
 

@@ -20,7 +20,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Login />} />
-        <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Registration />} />
         <Route path="RegisterDetails" element={<PersonalDetails />} />
         <Route path="EduDetails" element={<PersonalDetails2 />} />

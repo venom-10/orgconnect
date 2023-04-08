@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaRegEnvelope } from "react-icons/fa";
-import { MdLockOutline } from "react-icons/md";
+import { MdLockOutline, MdSettingsEthernet } from "react-icons/md";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { grey } from "@mui/material/colors";
@@ -45,12 +45,12 @@ function Login() {
     });
 
     const data = await res.json();
-    if (data.message === "Invalid Credentials") {
-      setError(true);
-    } else {
-      setError(false);
-      sessionStorage.setItem("email", details.email);
-      navigate("app/home");
+    
+    if(res.status === 400){
+      setError(true)
+      setTimeout(()=>{setError(false)}, 1500)
+    }else{
+      navigate('/app/home')
     }
   };
 
