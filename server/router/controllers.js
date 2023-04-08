@@ -150,7 +150,7 @@ router.post("/upload", upload.single("postedImage"), async (req, res) => {
     res.status(500).send("Error uploading file");
   }
 });
-
+// Getting Post data
 router.get("/getData", async (req, res) => {
   try {
     const Data = await postData.find({});
@@ -160,5 +160,19 @@ router.get("/getData", async (req, res) => {
     console.log(err);
   }
 });
+
+
+// Getting User Info
+router.get('/getUser', async (req, res)=>{
+  try{
+    const email = req.query.email;
+    const Data = await Personaldb.find({email})
+    res.json(Data);
+    res.end();
+  }
+  catch(err){
+    console.log(err);
+  }
+})
 
 module.exports = router;

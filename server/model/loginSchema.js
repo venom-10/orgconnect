@@ -4,23 +4,27 @@ const bcrypt = require('bcryptjs');
 const conn = require("../db/conn");
 
 const loginSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    cpassword: {
-        type: String,
-        required: true
-    }
-})
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  cpassword: {
+    type: String,
+    required: true,
+  },
+  profile: {
+    data: Buffer,
+    contentType: String
+  },
+});
 
 //Hashing
 loginSchema.pre('save', async function(next){
