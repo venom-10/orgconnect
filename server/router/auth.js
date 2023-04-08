@@ -5,6 +5,8 @@ const multer = require("multer");
 
 require("../db/conn");
 const Logindb = require("../model/loginSchema");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 
 router.get("/", (req, res) => {
@@ -12,17 +14,24 @@ router.get("/", (req, res) => {
 });
 
 // Router for Registration page
-router.post("/register", async (req, res) => {
+router.post("/register", upload.single('profile'), async (req, res) => {
 
   const { name, email, password, cpassword } = req.body;
+  let profile = null;
+  if(req.file){
+    profile = {
+      data:req.file.buffer,
+      contentType:req.file.mimetype
+    }
+  }
 
-  if (!name || !email || !password || !cpassword) {
-    return res.status(422).json({ error: "Please fill all the fields " });
+  if (!name || !email || !password || !cpassword || !profile) {
+    return res.status(422).json({ error: "Please fill all the fields" });
   }
 
   try {
     const userExist = await Logindb.findOne({ email: email });
-    const userExistWithName = await Logindb.findOne({ name:name })
+    const userExistWithName = await Logindb.findOne({ name: name })
     if (userExist || userExistWithName) {
       return res.status(422).json({ message: "Email or Name already exists" });
     } else if (password != cpassword) {
@@ -30,7 +39,7 @@ router.post("/register", async (req, res) => {
         .status(422)
         .json({ message: "Make sure password and current password are same" });
     } else {
-      const user = new Logindb({ name, email, password, cpassword });
+      const user = new Logindb({ name, email, password, cpassword, profile });
 
       await user.save();
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PersonIcon from "@mui/icons-material/Person";
 import { FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -19,7 +20,13 @@ function RegistrationForm() {
   const [userRegistered, Registered] = useState(false);
   const [showError, setshowError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [img, setImg] = useState();
 
+  const [fname, setFname] = useState(null);
+  const handleChangeInput = (e) => {
+    setFname(e.target.files[0].name);
+    setImg(e.target.files[0]);
+  };
   const handleUserChange = (event) => {
     setUsername(event.target.value);
   };
@@ -55,40 +62,45 @@ function RegistrationForm() {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: username,
-        email: email,
-        password: password,
-        cpassword: cpassword,
-      }),
-    });
-
-    const data = await res.json();
+    const formData = new FormData();
+    formData.append("name", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("cpassword", cpassword);
+    formData.append("profile", img);
     
-    if (res.status === 422) {
-      console.log("Email or name already exists");
-      setError("Email or name already exists");
-      setshowError(true);
-    } else if (
-      data.message === "Make sure password and current password are same"
-    ) {
-      console.log("Make sure password and current password are same");
-      setError("Password and confirm password are different");
-      setshowError(true);
-    } else {
-      sessionStorage.setItem('email', email);
-      setTimeout(() => {
-        navigate(`/RegisterDetails`);
-      }, 2000);
-      Registered(true);
-      setLoading(true);
-      console.log("Registeration Sucessfull");
+    try {
+      const res = await fetch("/register", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.error === "Please fill all the fields") {
+        setError("Please fill all the fields");
+        setshowError(true);
+      }
+      else if(data.message === 'Email or Name already exists'){
+        setError("Email or Name already exists");
+        setshowError(true);
+      }
+      else if (
+        data.message === "Make sure password and current password are same"
+      ) {
+        setError("Password and confirm password are different");
+        setshowError(true);
+      } else {
+        sessionStorage.setItem("email", email);
+        setTimeout(() => {
+          navigate(`/RegisterDetails`);
+        }, 2000);
+        Registered(true);
+        setLoading(true);
+        console.log("Registeration Sucessfull");
+      }
+    } catch (err) {
+      console.log(err);
     }
+    
   };
 
   return (
@@ -185,10 +197,29 @@ function RegistrationForm() {
                     />
                   )}
                 </div>
+                <div className="flex w-full mt-5 mb-3 justify-center">
+                  <div className="rounded-full bg-yellow-500 h-12 w-12 mt-1 flex justify-center items-center">
+                    <PersonIcon fontSize="medium" />
+                  </div>
+                  <label
+                    htmlFor="file-upload"
+                    className="p-4 text-custom_white relative cursor-pointer rounded-md font-medium hover:text-custom_orng hover:italic"
+                  >
+                    <span>{fname === null ? "Upload image" : fname}</span>
+                    <input
+                      id="file-upload"
+                      name="profile"
+                      onChange={handleChangeInput}
+                      accept="image/png, image/gif, image/jpeg"
+                      type="file"
+                      className="hidden"
+                    />{" "}
+                  </label>
+                </div>
                 <div className="text-white font-semibold mb-4">
                   Already have an account?{" "}
                   <a
-                    className="hover:text-custom_orng text-orange-300 hover:italic"
+                    className="hover:text-custom_orng text-orange-300 hover:ilic"
                     href="/Login"
                     underline="hover"
                   >

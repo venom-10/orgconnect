@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router";
 
 export default function PersonalDetails() {
@@ -12,11 +11,10 @@ export default function PersonalDetails() {
     city: "",
     state: "",
     address: "",
-    dob: "00-00-0000",
-    profile: "",
+    dob: "00-00-0000"
   });
 
-  const [fname, setFname] = useState(null);
+  
 
   const date = new Date().getFullYear();
   const cur_date = `${date}-12-31`;
@@ -31,14 +29,7 @@ export default function PersonalDetails() {
     }));
   };
 
-  const handleChangeInput = (e) => {
-    const { name, value } = e.target;
-    setRegisterDetails((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-    setFname(e.target.files[0].name);
-  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -214,26 +205,7 @@ export default function PersonalDetails() {
                     required
                   />
                 </div>
-                <div className="flex w-ful mt-5 mb-3">
-                  <div className="rounded-full bg-yellow-500 h-12 w-12 mt-1 flex justify-center items-center">
-                    <PersonIcon fontSize="medium" />
-                  </div>
-                  <label
-                    htmlFor="file-upload"
-                    className="p-4 text_org relative cursor-pointer rounded-md font-medium hover:text-custom_orng hover:italic"
-                  >
-                    <span>{fname === null ? "Upload image" : fname}</span>
-                    <input
-                      id="file-upload"
-                      name="profile"
-                      value={registerDetails.profile}
-                      onChange={handleChangeInput}
-                      accept="image/png, image/gif, image/jpeg"
-                      type="file"
-                      className="hidden"
-                    />{" "}
-                  </label>
-                </div>
+                <div className="flex justify-end items-center w-full mt-5 mb-3"></div>
                 <div className="flex justify-end items-center w-full mt-5 mb-3">
                   <button
                     onClick={storeData}
