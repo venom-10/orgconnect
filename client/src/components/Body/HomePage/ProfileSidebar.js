@@ -33,17 +33,26 @@ export default function ProfileSidebar() {
   }, [])
   return (
     <div className="sidebar ml-2 flex p-4 gap-4 items-center ">
-      <div className="profile h-full flex flex-col items-center rounded-lg bg-color2 shadow-lg drop-shadow-lg p-6">
+      <div
+        className="profile h-full flex flex-col items-center rounded-lg bg-color2 shadow-lg drop-shadow-lg p-6"
+        style={{ width: "3010px" }}
+      >
         <img
           src={imageSrc}
           alt="profile"
           className="sidebar_profile border-custom_white mt-4 bg-white shadow-md rounded-full"
         />
         <div className="flex w-full flex-col items-center my-4 text-custom_white">
-          <h1 className="text-xl font-semibold">{userData ? userData[0].firstName : ""} { userData ? userData[0].lastName : "" }</h1>
-          <p className="mt-2 text-base "> { userData ? userData[0].city:"" }, {userData ? userData[0].state : ""}</p>
+          <h1 className="text-xl font-semibold">
+            {userData ? userData[0]?.firstName : ""} { userData ? userData[0]?.lastName : "" }
+          </h1>
+          <p className="mt-2 text-base ">
+            {" "}
+            {userData ? userData[0]?.city : ""},{" "}
+            {userData ? userData[0]?.state : ""}
+          </p>
           <p className="p-2 my-7 text-center font-main">
-          { userData ? userData[0].intro : "" }
+            { userData ? userData[0]?.intro : "" }
           </p>
         </div>
       </div>
