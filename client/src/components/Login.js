@@ -50,6 +50,8 @@ function Login() {
       setError(true)
       setTimeout(()=>{setError(false)}, 1500)
     }else{
+      setError(false)
+      sessionStorage.setItem("email", details.email);
       navigate('/app/home')
     }
   };
