@@ -38,7 +38,7 @@ export default function ProfileSidebar() {
         style={{ width: "3010px" }}
       >
         <img
-          src={imageSrc}
+          src={imageSrc?imageSrc:prf1}
           alt="profile"
           className="sidebar_profile border-custom_white mt-4 bg-white shadow-md rounded-full"
         />
