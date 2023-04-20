@@ -6,7 +6,6 @@ import { useState } from "react";
 
 function Message() {
   
-  console.log('env', process.env.REACT_APP_API_KEY);
 
   const configuration = new Configuration({
     apiKey: process.env.REACT_APP_API_KEY,
