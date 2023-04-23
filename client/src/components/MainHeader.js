@@ -4,23 +4,33 @@ import SchoolIcon from "@mui/icons-material/School";
 import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import QuizIcon from '@mui/icons-material/Quiz';
-import { Link, NavLink, Outlet } from "react-router-dom";
+import QuizIcon from "@mui/icons-material/Quiz";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
 export default function MainHeader() {
-  const [login, setLogin] = useState(false)
-  
+
+  const navigate = useNavigate();
+  const [login, setLogin] = useState(false);
+
   useEffect(() => {
     if (sessionStorage.getItem("email")) {
       setLogin(true);
     }
   }, []);
 
-  const handleLogOut = ()=>{
-    localStorage.removeItem('user')
-    sessionStorage.removeItem('email')
-  }
+  const handleLogOut = () => {
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("email");
+  };
+
+  const handleClickSearch = (e) => {
+    e.preventDefault();
+    const searchName = e.target.search.value.toLowerCase();
+    navigate(`/app/profile/${searchName}`)
+  };
+
   return (
     <>
       <div className="home">
@@ -80,12 +90,14 @@ export default function MainHeader() {
               </ul>
             </div>
             <div className="sidebar flex justify-around items-center text-white">
-              <input
-                className="rounded-2xl focus:outline-none border-2 border-black ml-5 px-3 py-1 font-semibold text-sm text-custom_black"
-                type="text"
-                name=""
-                placeholder="Search"
-              />
+              <form onSubmit={handleClickSearch}>
+                <input
+                  className="rounded-2xl focus:outline-none border-2 border-black ml-5 px-3 py-1 font-semibold text-sm text-custom_black"
+                  type="text"
+                  name="search"
+                  placeholder="Search"
+                />
+              </form>
               <Link
                 to="/"
                 className="hover:text-custom_orng font-semibold"

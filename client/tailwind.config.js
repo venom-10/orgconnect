@@ -10,12 +10,15 @@ module.exports = {
         custom_orng: "#FF9F29",
         custom_black: "#161616",
         custom_white: "#ffffff",
-        custom_bg: "#EFF5F5"
+        custom_bg: "#EFF5F5",
       },
-      fontFamily:{
-        main:"Inter"
-      }
+      fontFamily: {
+        main: "Inter",
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    // ...
+  ],
 };
