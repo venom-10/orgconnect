@@ -1,7 +1,7 @@
 import prf1 from "../../images/prf2.svg";
 import { useState, useEffect } from "react";
 import { Buffer } from "buffer";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function Profile() {
   const [userData, setUserData] = useState("");
@@ -52,35 +52,32 @@ export default function Profile() {
             <h1 className="text-md text-custom_orng m-5 mt-10">Work Links:</h1>
             <a
               className="text-md text-white ml-5"
-              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
-              target="_thapa"
+              href={window.location.href}
             >
               Youtube
             </a>
             <a
               className="text-md text-white ml-5"
-              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
-              target="_thapa"
+              href={window.location.href}
             >
               LinkedIn
             </a>
             <a
               className="text-md text-white ml-5"
-              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
-              target="_thapa"
+              href={window.location.href}
             >
               Portfolio
             </a>
             <a
               className="text-md text-white ml-5"
-              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
+              href={window.location.href}
               target="_thapa"
             >
               Twitter
             </a>
             <a
               className="text-md text-white ml-5"
-              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
+              href={window.location.href}
               target="_thapa"
             >
               Facebook
