@@ -1,85 +1,165 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import { nanoid } from "nanoid";
 
 function Group() {
-  const [groupName, setGroupName] = React.useState('');
-  const [groupDescription, setGroupDescription] = React.useState('');
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [searchResults, setSearchResults] = React.useState([]);
+  const [groups, setGroups] = useState([]);
+  const [joinedGroups, setJoinedGroups] = useState([]);
+  const [newGroupName, setNewGroupName] = useState("");
+  const [newGroupDescription, setNewGroupDescription] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [selectedGroup, setSelectedGroup] = useState(null);
 
-  const handleCreateGroup = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('/api/groups', {
-        name: groupName,
-        description: groupDescription
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
+  function createGroup() {
+    const newGroup = {
+      id: nanoid(),
+      name: newGroupName,
+      description: newGroupDescription,
+      members: [],
+    };
+    setGroups([...groups, newGroup]);
+    setNewGroupName("");
+    setNewGroupDescription("");
+  }
+
+  function joinGroup(group) {
+    if (!group.members.includes("you")) {
+      const updatedGroup = { ...group, members: [...group.members, "you"] };
+      setJoinedGroups([...joinedGroups, updatedGroup]);
     }
   }
 
-  const handleSearchGroups = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.get(`/api/groups?search=${searchTerm}`);
-      setSearchResults(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+  function deleteGroup(group) {
+    setGroups(groups.filter((item) => item.id !== group.id));
+    setJoinedGroups(joinedGroups.filter((item) => item.id !== group.id));
   }
 
-  const handleJoinGroup = async (groupId) => {
-    try {
-      const response = await axios.post(`/api/groups/${groupId}/members`, {
-        userId: 'user123' // Replace with actual user ID
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+  function showMembers(group) {
+    setSelectedGroup(group);
   }
+
+  function hideMembers() {
+    setSelectedGroup(null);
+  }
+
+  const filteredGroups = groups.filter((group) =>
+    group.name.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Create or Join a Group</h1>
+      <h1 className="text-3xl font-bold mb-4">Groups</h1>
 
-      <form onSubmit={handleCreateGroup}>
-        <label htmlFor="groupName" className="block font-bold mb-2">Group Name</label>
-        <input type="text" id="groupName" value={groupName} onChange={(e) => setGroupName(e.target.value)} className="border border-gray-400 p-2 mb-4 w-half"/>
-
-        <label htmlFor="groupDescription" className="block font-bold mb-2">Group Description</label>
-        <textarea id="groupDescription" value={groupDescription} onChange={(e) => setGroupDescription(e.target.value)} className="border border-gray-400 p-2 mb-4 w-full"/>
-
-        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Create Group</button>
-      </form>
-
-      <hr className="my-8"/>
-
-      <form onSubmit={handleSearchGroups}>
-        <label htmlFor="searchTerm" className="block font-bold mb-2">Search Groups</label>
-        <input type="text" id="searchTerm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="border border-gray-400 p-2 mb-4 w-half "/>
-
-        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mx-2">Search</button>
-      </form>
-
-      <div className="my-8">
-        {searchResults.length > 0 ? (
-          <ul>
-            {searchResults.map((group) => (
-              <li key={group._id}>
-                {group.name} - {group.description}
-                <button onClick={() => handleJoinGroup(group._id)} className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded ml-4">Join Group</button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No groups found</p>
-        )}
+      <div className="mb-4">
+        <h2 className="text-lg font-bold mb-2">Create a group</h2>
+        <div className="flex mb-4">
+          <input
+            type="text"
+            className="border rounded py-2 px-3 mr-2"
+            placeholder="Group name"
+            value={newGroupName}
+            onChange={(e) => setNewGroupName(e.target.value)}
+          />
+          <input
+            type="text"
+            className="border rounded py-2 px-3 mr-2"
+            placeholder="Group description"
+            value={newGroupDescription}
+            onChange={(e) => setNewGroupDescription(e.target.value)}
+          />
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={createGroup}
+          >
+            Create
+          </button>
+        </div>
       </div>
+
+      <div className="mb-4">
+        <h2 className="text-lg font-bold mb-2">Join a group</h2>
+        <div className="flex mb-4">
+          <input
+            type="text"
+            className="border rounded py-2 px-3 mr-2"
+            placeholder="Search for a group"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+        </div>
+        <div className="flex flex-wrap">
+          {filteredGroups.map((group, index) => (
+            <div
+              key={index}
+              className="bg-gray-100 rounded-lg p-4 mr-4 mb-4"
+            >
+              <h3 className="font-bold">{group.name}</h3>
+              <p>{group.description}</p>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-
+                2 px-4 rounded mt-2"
+                onClick={() => joinGroup(group)}
+                >
+                Join
+                </button>
+                <button
+                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mt-2 ml-2"
+                onClick={() => showMembers(group)}
+                >
+                Members
+                </button>
+                </div>
+                ))}
+                </div>
+                </div>
+                {selectedGroup && (
+    <div className="mb-4">
+      <h2 className="text-lg font-bold mb-2">
+        Members of {selectedGroup.name}
+      </h2>
+      <div className="flex flex-wrap">
+        {selectedGroup.members.map((member, index) => (
+          <div
+            key={index}
+            className="bg-gray-100 rounded-lg p-4 mr-4 mb-4"
+          >
+            <h3 className="font-bold">{member}</h3>
+          </div>
+        ))}
+      </div>
+      <button
+        className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mt-2"
+        onClick={hideMembers}
+      >
+        Hide Members
+      </button>
     </div>
-  );
+  )}
+
+  <div className="mb-4">
+    <h2 className="text-lg font-bold mb-2">My groups</h2>
+    <div className="flex flex-wrap">
+      {joinedGroups.map((group, index) => (
+        <div key={index} className="bg-gray-100 rounded-lg p-4 mr-4 mb-4">
+          <h3 className="font-bold">{group.name}</h3>
+          <p>{group.description}</p>
+          <button
+            className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mt-2"
+            onClick={() => deleteGroup(group)}
+          >
+            Delete
+          </button>
+          <button
+            className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mt-2 ml-2"
+            onClick={() => showMembers(group)}
+          >
+            Members
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+);
 }
 
 export default Group;
