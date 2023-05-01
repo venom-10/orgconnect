@@ -10,6 +10,7 @@ import Group from "./components/Body/Group";
 import Learn from "./components/Body/Learn";
 import Message from "./components/Body/Message";
 import Profile from "./components/Body/Profile";
+import Chat from './components/Body/Chat';
 import Error from "./components/Error";
 import MainHeader from "./components/MainHeader";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="Group" element={<Group />} />
           <Route path="Learn" element={<Learn />} />
           <Route path="Message" element={<Message />} />
+          <Route path="Chat" element={<Chat/>}/>
           <Route path="Profile" element={<Profile />} />
           <Route path="app/*" element={<Error />} />
         </Route>

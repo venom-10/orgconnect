@@ -5,6 +5,7 @@ import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import QuizIcon from "@mui/icons-material/Quiz";
+import ChatIcon from '@mui/icons-material/Chat';
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
@@ -76,6 +77,15 @@ export default function MainHeader() {
                   <li>
                     <QuizIcon className="mr-1" />
                     Ask AI
+                  </li>
+                </NavLink>
+                <NavLink
+                  className="border-black hover:text-custom_orng h-full flex items-center"
+                  to="/app/chat"
+                >
+                  <li>
+                    <ChatIcon className="mr-1" />
+                    Chat
                   </li>
                 </NavLink>
                 <NavLink
