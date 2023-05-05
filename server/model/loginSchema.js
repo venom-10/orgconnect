@@ -35,6 +35,12 @@ loginSchema.pre('save', async function(next){
     next();
 } )
 
+loginSchema.pre("save", function (next) {
+  // Convert the name field to lowercase before saving
+  this.name = this.name.toLowerCase();
+  next();
+});
+
 
 const Login = mongoose.login.model('details',loginSchema);
 

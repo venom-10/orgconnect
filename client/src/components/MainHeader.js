@@ -8,7 +8,6 @@ import QuizIcon from "@mui/icons-material/Quiz";
 import ChatIcon from '@mui/icons-material/Chat';
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
 
 export default function MainHeader() {
 
@@ -28,8 +27,8 @@ export default function MainHeader() {
 
   const handleClickSearch = (e) => {
     e.preventDefault();
-    const searchName = e.target.search.value.toLowerCase();
-    navigate(`/app/profile/${searchName}`)
+    const searchName = e.target.search.value;
+    navigate(`profile/${searchName}`)
   };
 
   return (

@@ -44,7 +44,7 @@ export default function ProfileSidebar() {
         />
         <div className="flex w-full flex-col items-center my-4 text-custom_white">
           <h1 className="text-xl font-semibold">
-            {userData ? userData[0]?.firstName : ""} { userData ? userData[0]?.lastName : "" }
+            {userData ? userData[0]?.firstName.charAt(0).toUpperCase() + userData[0]?.firstName.slice(1) : ""} { userData ? userData[0]?.lastName : "" }
           </h1>
           <p className="mt-2 text-base ">
             {" "}
