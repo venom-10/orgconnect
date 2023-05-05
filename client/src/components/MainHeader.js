@@ -29,6 +29,7 @@ export default function MainHeader() {
     e.preventDefault();
     const searchName = e.target.search.value;
     navigate(`profile/${searchName}`)
+    e.target.search.value = "";
   };
 
   return (
