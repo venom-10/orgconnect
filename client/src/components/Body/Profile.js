@@ -2,6 +2,12 @@ import prf1 from "../../images/prf2.svg";
 import { useState, useEffect } from "react";
 import { Buffer } from "buffer";
 import { useNavigate } from "react-router";
+// import { PDFDownloadLink} from "@react-pdf/renderer";
+import { Resume } from "./ResumeTemplate";
+import { saveAs } from 'file-saver';
+import { pdf } from '@react-pdf/renderer';
+// import { Document } from "@react-pdf/renderer";
+
 
 export default function Profile() {
   const [userData, setUserData] = useState("");
@@ -35,7 +41,20 @@ export default function Profile() {
   }, []);
 
   const handleProfileEdit = () => {
+
     navi("/EduDetails");
+  };
+
+  const generatePdfDocument = async () => {
+    console.log(userData[0])
+    const blob = await pdf((
+        <Resume 
+            data = {userData[0]}
+            image = {imageSrc}
+            title='My PDF'
+        />
+    )).toBlob();
+    saveAs(blob, userData[0].firstName);
   };
 
   return (
@@ -164,9 +183,13 @@ export default function Profile() {
               >
                 Edit Profile
               </button>
-              <button className="inline-flex justify-center rounded-md border p-2 text-sm font-medium text-white hover:bg-color1 hover:text-color2">
+              <button
+                onClick={generatePdfDocument}
+                className="inline-flex justify-center rounded-md border p-2 text-sm font-medium text-white hover:bg-color1 hover:text-color2"
+              >
                 Profile Download
               </button>
+
             </div>
           </div>
         </div>
@@ -174,3 +197,4 @@ export default function Profile() {
     </>
   );
 }
+
