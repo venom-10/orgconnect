@@ -192,4 +192,32 @@ router.get('/getUserImage', async (req, res)=>{
   }
 })
 
+
+// Getting User Info by Name
+router.get('/getUserByName', async (req, res)=>{
+  try{
+    const firstName = req.query.name;
+    const Data = await Personaldb.find({ firstName });
+    res.json(Data);
+    res.end();
+  }
+  catch(err){
+    console.log(err);
+  }
+})
+
+// Getting UserImage
+router.get('/getUserImageByName', async (req, res)=>{
+  try{
+    const name = req.query.name;
+    const result = await Logindb.find({name})
+    const Data = result[0]?.profile;
+    res.json(Data)
+    res.end()
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
 module.exports = router;

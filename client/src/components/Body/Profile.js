@@ -2,6 +2,12 @@ import prf1 from "../../images/prf2.svg";
 import { useState, useEffect } from "react";
 import { Buffer } from "buffer";
 import { useNavigate } from "react-router";
+// import { PDFDownloadLink} from "@react-pdf/renderer";
+import { Resume } from "./ResumeTemplate";
+import { saveAs } from 'file-saver';
+import { pdf } from '@react-pdf/renderer';
+// import { Document } from "@react-pdf/renderer";
+
 
 export default function Profile() {
   const [userData, setUserData] = useState("");
@@ -34,107 +40,156 @@ export default function Profile() {
     getUserImage();
   }, []);
 
+  const handleProfileEdit = () => {
 
-  const handleProfileEdit = ()=>{
     navi("/EduDetails");
-  }
+  };
+
+  const generatePdfDocument = async () => {
+    console.log(userData[0])
+    const blob = await pdf((
+        <Resume 
+            data = {userData[0]}
+            image = {imageSrc}
+            title='My PDF'
+        />
+    )).toBlob();
+    saveAs(blob, userData[0].firstName);
+  };
 
   return (
     <>
       <div className="main_body bg-custom_bg basis-11/12 flex justify-center">
         <div className="__body p-4 flex bg-color2 m-4 rounded-lg shadow-lg drop-shadow-lg">
-          <div className=" flex w-2/5 flex-col p-5">
+          <div className="flex w-2/5 flex-col p-5">
             <img
               src={imageSrc ? imageSrc : prf1}
               alt="profile"
               className="w-4/6 border-custom_white bg-white shadow-md m-4 rounded-full"
             />
-            <h1 className="text-md text-custom_orng m-5 mt-10">Work Links:</h1>
+            <h1 className="text-md text-custom_orng ml-5">
+              Profile Links:
+            </h1>
             <a
-              className="text-md text-white ml-5"
-              href={window.location.href}
-            >
-              Youtube
-            </a>
-            <a
-              className="text-md text-white ml-5"
-              href={window.location.href}
+              className="text-md text-white ml-5 hover:text-custom_orng"
+              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
+              target="_thapa"
             >
               LinkedIn
             </a>
             <a
-              className="text-md text-white ml-5"
-              href={window.location.href}
+              className="text-md text-white ml-5 hover:text-custom_orng"
+              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
+              target="_thapa"
+            >
+              GitHub
+            </a>
+            <a
+              className="text-md text-white ml-5 hover:text-custom_orng"
+              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
+              target="_thapa"
             >
               Portfolio
             </a>
             <a
-              className="text-md text-white ml-5"
-              href={window.location.href}
+              className="text-md text-white ml-5 hover:text-custom_orng"
+              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
               target="_thapa"
             >
-              Twitter
+              Skype
+            </a>
+            <h1 className="text-md text-custom_orng m-5 mt-10">
+              Research Works:
+            </h1>
+            <a
+              className="text-md text-white ml-5 hover:text-custom_orng"
+              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
+              target="_thapa"
+            >
+              Paper 1
             </a>
             <a
-              className="text-md text-white ml-5"
-              href={window.location.href}
+              className="text-md text-white ml-5 hover:text-custom_orng"
+              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
               target="_thapa"
             >
-              Facebook
+              Paper 2
+            </a>
+            <a
+              className="text-md text-white ml-5 hover:text-custom_orng"
+              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
+              target="_thapa"
+            >
+              Paper 3
+            </a>
+            <a
+              className="text-md text-white ml-5 hover:text-custom_orng"
+              href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
+              target="_thapa"
+            >
+              Paper 4
             </a>
           </div>
           <div className="flex w-4/5 flex-col pt-14">
-            <h1 className="text-3xl font-semibold text-custom_orng">
+            <h1 className="text-3xl font-semibold text-custom_orng" id="name">
               {userData
-                ? userData[0].firstName + " " + userData[0].lastName
+                ? userData[0]?.firstName.charAt(0).toUpperCase()+userData[0].firstName.slice(1) + " " + userData[0]?.lastName
                 : null}
             </h1>
-            <h1 className="text-xl font-semibold text-white pb-6">Developer</h1>
-            <h1 className="text-md text-white">Ranking: 1/10</h1>
-            <div className="flex w-full h-full flex-col mt-12 pt-5">
+            <h1 className="text-md text-white mt-2" id="City">
+              {userData[0]?.city}
+              <span>, </span>
+              <span id="Country">{userData[0]?.state}</span>
+            </h1>
+            <p className="text-lg text-custom_orng pb-3">
+              {userData ? userData[0]?.intro : null}
+            </p>
+            <div className="flex w-full h-full flex-col pt-5">
               <h1 className="text-2xl font-semibold text-custom_orng">About</h1>
               <p className="flex self-center w-full h-0.5 text-center bg-color1 rounded-md mb-10" />
-              <p className="text-lg text-custom_orng pb-3">
-                {userData ? userData[0].intro : null}
-              </p>
               <div className="flex w-auto">
                 <div className="flex w-1/2 flex-col">
-                  {/*<h1 className="text-lg text-custom_orng pb-3">Experience</h1>
-                  <h1 className="text-lg text-custom_orng pb-3">Hourly Rate</h1>
-                   <h1 className="text-lg text-custom_orng pb-3">
-                    Total Projects
+                  <h1 className="text-lg text-custom_orng pb-3">
+                    Organization
                   </h1>
                   <h1 className="text-lg text-custom_orng pb-3">
-                    English Level
+                    Qualification
                   </h1>
-                  <h1 className="text-lg text-custom_orng pb-3">
-                    Availability
-                  </h1>
+                  <h1 className="text-lg text-custom_orng pb-3">Skills</h1>
                 </div>
                 <div className="flex w-1/2 flex-col">
-                  <h1 className="text-lg font-semibold text-white pb-3">
-                    Expert
+                  <h1
+                    className="text-lg font-semibold text-white pb-3"
+                    id="organization"
+                  >
+                    {userData[0]?.graduationCollge}
+                  </h1>
+                  <h1
+                    className="text-lg font-semibold text-white pb-3"
+                    id="qualification"
+                  >
+                    {userData[0]?.graduationDegree}
                   </h1>
                   <h1 className="text-lg font-semibold text-white pb-3">
-                    $10000000/hr
+                    {userData[0]?.skills}
                   </h1>
-                  <h1 className="text-lg font-semibold text-white pb-3">999</h1>
-                  <h1 className="text-lg font-semibold text-white pb-3">
-                    Expert
-                  </h1>
-                  <h1 className="text-lg font-semibold text-white pb-3">
-                    3 months
-                  </h1> */}
                 </div>
               </div>
             </div>
             <div className="flex justify-end gap-4 items-center w-full mr-auto">
-              <button className="inline-flex justify-center rounded-md border p-2 text-sm font-medium text-white hover:bg-color1 hover:text-color2" onClick={handleProfileEdit}>
+              <button
+                onClick={handleProfileEdit}
+                className="inline-flex justify-center rounded-md border p-2 text-sm font-medium text-white hover:bg-color1 hover:text-color2"
+              >
                 Edit Profile
               </button>
-              <button className="inline-flex justify-center rounded-md border p-2 text-sm font-medium text-white hover:bg-color1 hover:text-color2">
+              <button
+                onClick={generatePdfDocument}
+                className="inline-flex justify-center rounded-md border p-2 text-sm font-medium text-white hover:bg-color1 hover:text-color2"
+              >
                 Profile Download
               </button>
+
             </div>
           </div>
         </div>
@@ -142,3 +197,4 @@ export default function Profile() {
     </>
   );
 }
+

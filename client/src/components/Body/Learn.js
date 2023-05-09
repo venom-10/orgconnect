@@ -1,8 +1,14 @@
 import { useState } from "react";
+import LaunchIcon from "@mui/icons-material/Launch";
+
 
 export default function Learn() {
-
-  const AllLink = []
+  const [allLinks, setAllLinks] = useState([
+    "https://www.geeksforgeeks.org/c-plus-plus/",
+    "https://www.geeksforgeeks.org/java",
+    "https://www.geeksforgeeks.org/javascript/",
+     
+  ]);
 
   const [link, setLink] = useState("");
 
@@ -12,29 +18,37 @@ export default function Learn() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    AllLink.push(link);
-    console.log(AllLink);
-    setLink('');
+    setAllLinks((prevLinks) => [...prevLinks, link]);
+    console.log(allLinks);
+    setLink("");
   };
 
   return (
-    <div className="main_body bg-gray-300 basis-11/12 flex justify-center p-6">
-    <div className="w-full flex justify-center gap-4">
-      <input
-        className="h-12 w-3/4 rounded-3xl focus:outline-none border-2 border-black ml-5 px-3 py-1 font-semibold text-sm text-custom_black"
-        type="text"
-        name="link"
-        placeholder="Search"
-        value={link}
-        onChange={handleLinkChange}
-      />
-      <button
-        type="submit"
-        className="h-12 w-20 px-3 py-1 drop-shadow-lg active:drop-shadow-none active:bg-inherit bg-white rounded-3xl"
-        onClick={handleSubmit}
-      >
-        Add
-      </button>
-    </div></div>
+    <div className="main_body bg-gray-300 basis-11/12 flex items-center p-6 flex-col gap-4">
+      <div className="w-full flex justify-center gap-4">
+        <input
+          className="h-12 w-3/4 rounded-3xl focus:outline-none border-2 border-black ml-5 px-3 py-1 font-semibold text-sm text-custom_black"
+          type="text"
+          name="link"
+          placeholder="Search"
+          value={link}
+          onChange={handleLinkChange}
+        />
+        <button
+          type="submit"
+          className="h-12 w-20 px-3 py-1 drop-shadow-lg active:drop-shadow-none active:bg-inherit bg-white rounded-3xl"
+          onClick={handleSubmit}
+        >
+          Add
+        </button>
+      </div>
+      <div className="text-lg font-medium font-mono">
+        {allLinks.map((link, index) => (
+          <h1 className="underline decoration-indigo-600" key={index}>
+            <a href={link}>{link}</a>
+          </h1>
+        ))}
+      </div>
+    </div>
   );
 }

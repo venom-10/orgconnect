@@ -125,6 +125,12 @@ const userSchema = new mongoose.Schema({
 })
 
 
+userSchema.pre("save", function (next) {
+  // Convert the name field to lowercase before saving
+  this.firstName = this.firstName.toLowerCase();
+  next();
+});
+
 
 const User = mongoose.details.model('details',userSchema);
 

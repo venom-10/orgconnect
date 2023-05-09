@@ -13,9 +13,9 @@ import Profile from "./components/Body/Profile";
 import Chat from './components/Body/Chat';
 import Error from "./components/Error";
 import MainHeader from "./components/MainHeader";
+import SearchProfile from "./components/Body/SearchProfile";
 
 function App() {
-  // const[isLogin, setLogin] = useState(false);
 
   return (
     <BrowserRouter>
@@ -30,8 +30,9 @@ function App() {
           <Route path="Group" element={<Group />} />
           <Route path="Learn" element={<Learn />} />
           <Route path="Message" element={<Message />} />
-          <Route path="Chat" element={<Chat/>}/>
+          <Route path="Chat" element={<Chat />} />
           <Route path="Profile" element={<Profile />} />
+          <Route path="Profile/:name" element={<SearchProfile />} />
           <Route path="app/*" element={<Error />} />
         </Route>
         <Route path="*" element={<Error />} />
