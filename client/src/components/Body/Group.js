@@ -46,11 +46,12 @@ function Group() {
   );
 
   return (
-    <div className="container mx-auto p-4">
+  <div className="bg-slate-300 h-screen ">
+       <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4 mx-50">Groups</h1>
 
       <div className="mb-4">
-        <h2 className="text-lg font-bold mb-2">Create a group</h2>
+        <h2 className="text-lg font-bold mb-2 bg-orange-500">Create a group</h2>
         <div className="flex mb-4">
           <input
             type="text"
@@ -67,7 +68,7 @@ function Group() {
             onChange={(e) => setNewGroupDescription(e.target.value)}
           />
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded"
             onClick={createGroup}
           >
             Create
@@ -76,7 +77,7 @@ function Group() {
       </div>
 
       <div className="mb-4">
-        <h2 className="text-lg font-bold mb-2">Join a group</h2>
+        <h2 className="text-lg font-bold mb-2 bg-orange-500">Join a group</h2>
         <div className="flex mb-4">
           <input
             type="text"
@@ -159,6 +160,7 @@ function Group() {
     </div>
   </div>
 </div>
+  </div>
 );
 }
 

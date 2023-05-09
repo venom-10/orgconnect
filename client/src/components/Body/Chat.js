@@ -16,14 +16,16 @@ const DirectChatPage = () => {
     function renderChatForm(creds) {
 		return (
 			<div>
+			  <div>
 				<input className="border-b border-t border-r border-l mt-1 rounded border-black"
 					placeholder='Username' 
 					value={username} 
 					onChange={(e) => setUsername(e.target.value)} 
 				/>
-				<button className="bg-cyan-400 rounded mx-2" onClick={() => createDirectChat(creds)}>
+				<button className="bg-orange-400 hover:bg-orange-500 font-bold rounded mx-2" onClick={() => createDirectChat(creds)}>
 					Create
 				</button>
+			</div>
 			</div>
 		)
 	}
