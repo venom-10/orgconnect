@@ -8,12 +8,12 @@ export default function SideBar() {
   const url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`;
 
   useEffect(() => {
-    const getNews = async () => {
-      const res = await fetch(url);
-      const data = await res.json();
-      setNews(data.articles);
-    };
-    getNews();
+    // const getNews = async () => {
+    //   const res = await fetch(url);
+    //   const data = await res.json();
+    //   setNews(data.articles);
+    // };
+    // getNews();
   }, []);
 
   return (
