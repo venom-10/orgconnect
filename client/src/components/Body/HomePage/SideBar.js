@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Topic from "./NewsTopic";
 
+
 export default function SideBar() {
   const [news, setNews] = useState([]);
 

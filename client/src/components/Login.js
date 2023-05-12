@@ -33,7 +33,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    const res = await fetch("/signin", {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/signin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

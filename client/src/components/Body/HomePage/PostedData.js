@@ -9,7 +9,7 @@ export default function PostedData() {
   
   useEffect(()=>{
     const getAllData = async ()=>{
-      const res = await fetch('/getData', {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/getData`, {
         method: "GET"
       });
       const data = await res.json()

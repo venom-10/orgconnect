@@ -38,18 +38,24 @@ export default function SearchProfile({p}) {
       setLoading(false);
     }, 2500);
     const getUserData = async () => {
-      const res = await fetch(`/getUserByName?name=${name}`, {
-        method: "GET",
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_API}/getUserByName?name=${name}`,
+        {
+          method: "GET",
+        }
+      );
 
       const data = await res.json();
       setUserData(data);
     };
 
     const getUserImage = async () => {
-      const res = await fetch(`/getUserImageByName?name=${name}`, {
-        method: "GET",
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_API}/getUserImageByName?name=${name}`,
+        {
+          method: "GET",
+        }
+      );
 
       const data = await res.json();
       if (data) {

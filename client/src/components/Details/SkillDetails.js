@@ -70,7 +70,7 @@ export default function PersonalDetails() {
 
     const skill = (skill1 + ", " + skill2 + ", " + skill3 + ", " + skill4);
 
-    const res = await fetch("/userDetails", {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/userDetails`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

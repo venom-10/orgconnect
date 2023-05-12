@@ -38,7 +38,7 @@ export default function HomePage() {
     formData.append("postedText", postedText.trim());
     formData.append("postedImage", postedImage);
     try {
-      const data = await fetch("/upload", {
+      const data = await fetch(`${process.env.REACT_APP_BACKEND_API}/upload`, {
         method: "POST",
         body: formData,
       });

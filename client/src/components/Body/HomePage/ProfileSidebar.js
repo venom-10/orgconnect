@@ -9,18 +9,24 @@ export default function ProfileSidebar() {
   useEffect(()=>{
     const email = sessionStorage.getItem('email')
     const getUserData = async ()=>{
-      const res = await fetch(`/getUser?email=${email}`, {
-        method:'GET'
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_API}/getUser?email=${email}`,
+        {
+          method: "GET",
+        }
+      );
 
       const data = await res.json();
       setUserData(data);
     }
 
     const getUserImage = async ()=>{
-      const res = await fetch(`/getUserImage?email=${email}`, {
-        method:'GET'
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_API}/getUserImage?email=${email}`,
+        {
+          method: "GET",
+        }
+      );
 
       const data = await res.json();
       if(data){

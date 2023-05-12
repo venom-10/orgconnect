@@ -4,10 +4,9 @@ import { Buffer } from "buffer";
 import { useNavigate } from "react-router";
 // import { PDFDownloadLink} from "@react-pdf/renderer";
 import { Resume } from "./ResumeTemplate";
-import { saveAs } from 'file-saver';
-import { pdf } from '@react-pdf/renderer';
+import { saveAs } from "file-saver";
+import { pdf } from "@react-pdf/renderer";
 // import { Document } from "@react-pdf/renderer";
-
 
 export default function Profile() {
   const [userData, setUserData] = useState("");
@@ -17,18 +16,24 @@ export default function Profile() {
   useEffect(() => {
     const email = sessionStorage.getItem("email");
     const getUserData = async () => {
-      const res = await fetch(`/getUser?email=${email}`, {
-        method: "GET",
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_API}/getUser?email=${email}`,
+        {
+          method: "GET",
+        }
+      );
 
       const data = await res.json();
       setUserData(data);
     };
 
     const getUserImage = async () => {
-      const res = await fetch(`/getUserImage?email=${email}`, {
-        method: "GET",
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_API}/getUserImage?email=${email}`,
+        {
+          method: "GET",
+        }
+      );
 
       const data = await res.json();
       if (data) {
@@ -41,19 +46,14 @@ export default function Profile() {
   }, []);
 
   const handleProfileEdit = () => {
-
     navi("/EduDetails");
   };
 
   const generatePdfDocument = async () => {
-    console.log(userData[0])
-    const blob = await pdf((
-        <Resume 
-            data = {userData[0]}
-            image = {imageSrc}
-            title='My PDF'
-        />
-    )).toBlob();
+    console.log(userData[0]);
+    const blob = await pdf(
+      <Resume data={userData[0]} image={imageSrc} title="My PDF" />
+    ).toBlob();
     saveAs(blob, userData[0].firstName);
   };
 
@@ -67,9 +67,7 @@ export default function Profile() {
               alt="profile"
               className="w-4/6 border-custom_white bg-white shadow-md m-4 rounded-full"
             />
-            <h1 className="text-md text-custom_orng ml-5">
-              Profile Links:
-            </h1>
+            <h1 className="text-md text-custom_orng ml-5">Profile Links:</h1>
             <a
               className="text-md text-white ml-5 hover:text-custom_orng"
               href="https://www.youtube.com/watch?v=kHEhhV3EyPU&t=1s"
@@ -133,7 +131,10 @@ export default function Profile() {
           <div className="flex w-4/5 flex-col pt-14">
             <h1 className="text-3xl font-semibold text-custom_orng" id="name">
               {userData
-                ? userData[0]?.firstName.charAt(0).toUpperCase()+userData[0].firstName.slice(1) + " " + userData[0]?.lastName
+                ? userData[0]?.firstName.charAt(0).toUpperCase() +
+                  userData[0].firstName.slice(1) +
+                  " " +
+                  userData[0]?.lastName
                 : null}
             </h1>
             <h1 className="text-md text-white mt-2" id="City">
@@ -189,7 +190,6 @@ export default function Profile() {
               >
                 Profile Download
               </button>
-
             </div>
           </div>
         </div>
@@ -197,4 +197,3 @@ export default function Profile() {
     </>
   );
 }
-

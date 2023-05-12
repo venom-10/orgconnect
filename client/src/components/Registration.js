@@ -70,7 +70,7 @@ function RegistrationForm() {
     formData.append("profile", img);
     
     try {
-      const res = await fetch("/register", {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/register`, {
         method: "POST",
         body: formData,
       });
