@@ -2,12 +2,13 @@ const dotenv = require("dotenv");
 const express = require('express');
 const app = express();
 const ws = require('ws');
+const cors = require('cors')
 
 dotenv.config({path: './config.env'});
 require('./db/conn')
 
 app.use(express.json());
-
+app.use(cors())
 app.use(require('./router/auth'));
 app.use(require("./router/controllers"));
 
