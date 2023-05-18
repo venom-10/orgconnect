@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const dotenv = require("dotenv");
+const axios = require("axios").default;
+dotenv.config({ path: "../../.env" });
 
 require("../db/conn");
 const Logindb = require('../model/loginSchema')
@@ -219,5 +222,24 @@ router.get('/getUserImageByName', async (req, res)=>{
     console.log(err)
   }
 })
+
+router.get('/getNews', async (req, res)=>{
+  try {
+    const options = {
+      method: 'GET',
+      url: 'https://api.newscatcherapi.com/v2/search',
+      params: { q: 'India', lang: 'en', sort_by: 'relevancy', page: '1' },
+      headers: {
+        'x-api-key': process.env.NEWS_API,
+      },
+    };
+
+    const response = await axios.request(options);
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 module.exports = router;

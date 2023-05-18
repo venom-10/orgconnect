@@ -8,16 +8,14 @@ export default function SideBar() {
   const url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`;
 
   useEffect(() => {
-    const getNews = async () => {
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        setNews(data.articles);
-      } catch (error) {
-        console.log("Error fetching news:", error);
-      }
-    };
-
+    const getNews = async()=>{
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/getNews`,{
+        method: 'GET'
+      });
+      const data = await res.json();
+      setNews(data.articles);
+    }
+    getNews();
   }, []);
 
   return (
@@ -31,7 +29,7 @@ export default function SideBar() {
         </div>
         <div className="py-2 px-4 gap-3 flex flex-col text-sm font-medium">
           {news.slice(0, 11).map((item, id) => (
-            <Topic key={id} title={item.title} url={item.url} />
+            <Topic key={id} title={item.title} url={item.link} />
           ))}
         </div>
       </div>
