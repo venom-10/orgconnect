@@ -9,11 +9,15 @@ export default function SideBar() {
 
   useEffect(() => {
     const getNews = async () => {
-      const res = await fetch(url);
-      const data = await res.json();
-      setNews(data.articles);
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        setNews(data.articles);
+      } catch (error) {
+        console.log("Error fetching news:", error);
+      }
     };
-    getNews();
+
   }, []);
 
   return (
