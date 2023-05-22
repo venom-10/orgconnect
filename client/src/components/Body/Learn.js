@@ -24,7 +24,7 @@ export default function Learn() {
   };
 
   return (
-    <div className="main_body bg-gray-300 basis-11/12 flex items-center p-6 flex-col gap-4">
+    <div className="main_body bg-custom_bg basis-11/12 flex items-center p-6 flex-col gap-4">
       <div className="w-full flex justify-center gap-4">
         <input
           className="h-12 w-3/4 rounded-3xl focus:outline-none border-2 border-black ml-5 px-3 py-1 font-semibold text-sm text-custom_black"
@@ -36,7 +36,7 @@ export default function Learn() {
         />
         <button
           type="submit"
-          className="h-12 w-20 px-3 py-1 drop-shadow-lg active:drop-shadow-none active:bg-inherit bg-white rounded-3xl"
+          className="h-12 w-20 px-3 py-1 shadow-lg drop-shadow-lg active:drop-shadow-none active:bg-inherit bg-white rounded-3xl"
           onClick={handleSubmit}
         >
           Add

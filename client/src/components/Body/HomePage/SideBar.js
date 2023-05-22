@@ -20,7 +20,7 @@ export default function SideBar() {
 
   return (
     <div className="sidebar ml-2 flex flex-col p-4 gap-6">
-      <div className="suggestion basis-1/4 text-center bg-white rounded-md shadow-md drop-shadow-md mt-2">
+      <div className="hidden suggestion basis-1/4 text-center bg-white rounded-md shadow-md drop-shadow-md mt-2">
         <p className="font-main text-xl font-bold m-5">Profile Suggestion</p>
       </div>
       <div className="news basis-3/4 bg-white rounded-md shadow-md drop-shadow-md p-3 font-main">
@@ -28,9 +28,9 @@ export default function SideBar() {
           <h1 className="text-xl p-4 pt-2 font-bold">Today's headline</h1>
         </div>
         <div className="py-2 px-4 gap-3 flex flex-col text-sm font-medium">
-          {news.slice(0, 11).map((item, id) => (
+          {/* {news.slice(0, 16).map((item, id) => (
             <Topic key={id} title={item.title} url={item.link} />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
